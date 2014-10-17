@@ -8,6 +8,8 @@ package servicioBD;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Properties;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -94,4 +96,43 @@ public class serviciodb {
             logger.info("ERROR: conexión aún activa");
         }
     }
+    
+    
+    
+    public Usuario getUsuario() {
+        Usuario usuario = null;
+        try {
+            
+                // Conectamos si no está conectado
+                if (!isConectado()) {
+                    conectar();
+                }
+
+                PreparedStatement st = null;
+                String query = "SELECT * FROM usuario ";
+                st = conexion.prepareStatement(query);
+                if (st != null) {
+
+                    ResultSet rs = st.executeQuery();
+                    if (rs != null) {
+                        if (rs.next()) {
+                            usuario = new Usuario();
+                            usuario.setUsuario(rs.getString("usuario"));
+                            usuario.setPass(rs.getString("pass"));
+                        } else {
+                            logger.info("No existe usuario: ");
+                        }
+                        rs.close();
+                    }
+                    st.close();
+                }
+       
+        } catch (Exception e) {
+            usuario = null;
+            logger.error(e.toString());
+            logger.debug("Error al obtener usuario", e);
+        }
+        return usuario;
+    }
+
 }

@@ -11,26 +11,27 @@ package modell;
  * @author frubilar
  */
 public class Usuario {
-    private String nombre="";
-    private String clave="";
+    private String usuario="";
+    private String pass="";
 
     public Usuario() {
     }
 
-    public String getNombre() {
-        return nombre;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
-    public String getClave() {
-        return clave;
+    public void setPass(String pass) {
+        this.pass = pass;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public String getUsuario() {
+        return usuario;
     }
 
-    public void setClave(String clave) {
-        this.clave = clave;
+    public String getPass() {
+        return pass;
     }
+
     
 }

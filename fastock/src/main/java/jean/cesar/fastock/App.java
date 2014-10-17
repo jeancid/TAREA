@@ -1,5 +1,6 @@
 package jean.cesar.fastock;
 
+import gui.Loginn;
 import javax.swing.JOptionPane;
 
 /**
@@ -10,6 +11,8 @@ public class App
 {
     public static void main( String[] args )
     {
-        JOptionPane.showMessageDialog(null, "Cuarto Commit");
+        Loginn loggin = new Loginn();
+        loggin.setVisible(true);
+        loggin.setLocationRelativeTo(null);
     }
 }
