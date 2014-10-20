@@ -119,7 +119,7 @@ public class Loginn extends javax.swing.JFrame {
             Usuario usuario2 = new Usuario();
             usuario2 = serv.getUsuario();
             if(usuario2.getPass().equals(usuario.getPass()) && usuario2.getUsuario().equals(usuario.getUsuario())){
-                Menu menu = new Menu();
+                Sistema menu = new Sistema();
                 menu.setVisible(true);
                 menu.setLocationRelativeTo(null);
                 this.dispose();
