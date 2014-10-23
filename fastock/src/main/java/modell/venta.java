@@ -17,6 +17,10 @@ public class venta {
     private Date fecha=null;
     private Integer usuario_idusuario=null;
 
+    public venta() {
+    }
+   
+    
     public void setIdventa(Integer idventa) {
         this.idventa = idventa;
     }
@@ -31,9 +35,6 @@ public class venta {
 
     public void setUsuario_idusuario(Integer usuario_idusuario) {
         this.usuario_idusuario = usuario_idusuario;
-    }
-
-    public venta() {
     }
 
     public Integer getIdventa() {
