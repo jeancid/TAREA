@@ -14,5 +14,6 @@ public class App
         Loginn loggin = new Loginn();
         loggin.setVisible(true);
         loggin.setLocationRelativeTo(null);
+        JOptionPane.showMessageDialog(loggin, args);
     }
 }
