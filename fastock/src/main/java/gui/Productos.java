@@ -199,7 +199,7 @@ public class Productos extends javax.swing.JFrame {
         } else{
         Producto producto= new Producto();
         producto.setId_barra(this.CodigoFiel.getText());
-        String Precioaux;Integer precioreal;
+        String Precioaux;Integer precioreal = null;
             Precioaux = this.CodigoFiel.getText();
         try{
         	precioreal=Integer.parseInt(Precioaux);
