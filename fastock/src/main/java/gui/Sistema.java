@@ -32,14 +32,17 @@ public class Sistema extends javax.swing.JFrame {
         CerrarMenu = new javax.swing.JMenuItem();
         SalirMenu = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        Actualizarstock = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
+<<<<<<< HEAD
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+=======
+>>>>>>> 40e5473c40fc2f74a5c0a4e584b98a7b30fdd827
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,6 +68,7 @@ public class Sistema extends javax.swing.JFrame {
 
         jMenu3.setText("Mantenimiento");
 
+<<<<<<< HEAD
         jMenuItem3.setText("Proveedor");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,10 +83,21 @@ public class Sistema extends javax.swing.JFrame {
                 jMenuItem4ActionPerformed(evt);
             }
         });
+=======
+        jMenuItem4.setText("Proveedor");
+>>>>>>> 40e5473c40fc2f74a5c0a4e584b98a7b30fdd827
         jMenu3.add(jMenuItem4);
 
         jMenuItem5.setText("Actualizar stock");
         jMenu3.add(jMenuItem5);
+
+        Actualizarstock.setText("Actualizar Stock");
+        Actualizarstock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ActualizarstockActionPerformed(evt);
+            }
+        });
+        jMenu3.add(Actualizarstock);
 
         jMenuBar1.add(jMenu3);
 
@@ -104,6 +119,7 @@ public class Sistema extends javax.swing.JFrame {
         });
         jMenu4.add(jMenuItem8);
 
+<<<<<<< HEAD
         jMenuItem9.setText("Proveedores");
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,6 +133,10 @@ public class Sistema extends javax.swing.JFrame {
         jMenu2.setText("Venta");
         jMenuBar1.add(jMenu2);
 
+=======
+        jMenuBar1.add(jMenu4);
+
+>>>>>>> 40e5473c40fc2f74a5c0a4e584b98a7b30fdd827
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -151,6 +171,7 @@ public class Sistema extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
+<<<<<<< HEAD
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem8ActionPerformed
@@ -175,6 +196,15 @@ public class Sistema extends javax.swing.JFrame {
         proveedor.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+=======
+    private void ActualizarstockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarstockActionPerformed
+           Actualizar_stock ventana = new Actualizar_stock();
+                ventana.setVisible(true);
+                ventana.setLocationRelativeTo(null);
+                this.dispose();
+// TODO add your handling code here:
+    }//GEN-LAST:event_ActualizarstockActionPerformed
+>>>>>>> 40e5473c40fc2f74a5c0a4e584b98a7b30fdd827
 
     /**
      * @param args the command line arguments
@@ -212,18 +242,25 @@ public class Sistema extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
     private javax.swing.JMenuItem CerrarMenu;
     private javax.swing.JMenuItem SalirMenu;
+=======
+    private javax.swing.JMenuItem Actualizarstock;
+>>>>>>> 40e5473c40fc2f74a5c0a4e584b98a7b30fdd827
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+<<<<<<< HEAD
     private javax.swing.JMenuItem jMenuItem3;
+=======
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+>>>>>>> 40e5473c40fc2f74a5c0a4e584b98a7b30fdd827
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
 }

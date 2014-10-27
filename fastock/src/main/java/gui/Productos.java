@@ -192,9 +192,21 @@ public class Productos extends javax.swing.JFrame {
     }//GEN-LAST:event_AtrasButtonActionPerformed
 
     private void AceptarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarButtonActionPerformed
+<<<<<<< HEAD
        String Precioaux; 
        Integer Precioreal=null;
        Precioreal = Integer.parseInt(Precioaux);
+=======
+        if (this.CodigoFiel.getText().equals("") || this.NombreFiel.getText().equals("")|| 
+                this.PrecioFiel.getText().equals("") || this.RutFiel.getText().equals("")
+                || this.CategoriaFiel.getText().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Debe llenar todos los campos");
+        } else{
+        Producto producto= new Producto();
+        producto.setId_barra(this.CodigoFiel.getText());
+        String Precioaux;Integer precioreal = null;
+            Precioaux = this.CodigoFiel.getText();
+>>>>>>> 40e5473c40fc2f74a5c0a4e584b98a7b30fdd827
         try{
         	Precioreal=Integer.parseInt(Precioaux);
     	}catch(NumberFormatException ex){

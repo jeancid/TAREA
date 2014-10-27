@@ -32,6 +32,7 @@
             <Property name="text" type="java.lang.String" value="Mantenimiento"/>
           </Properties>
           <SubComponents>
+<<<<<<< HEAD
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Proveedor"/>
@@ -40,6 +41,8 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem3ActionPerformed"/>
               </Events>
             </MenuItem>
+=======
+>>>>>>> 40e5473c40fc2f74a5c0a4e584b98a7b30fdd827
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Productos"/>
@@ -52,6 +55,14 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Actualizar stock"/>
               </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="Actualizarstock">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Actualizar Stock"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ActualizarstockActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -76,6 +87,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem8ActionPerformed"/>
               </Events>
             </MenuItem>
+<<<<<<< HEAD
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem9">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Proveedores"/>
@@ -90,6 +102,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Venta"/>
           </Properties>
+=======
+          </SubComponents>
+>>>>>>> 40e5473c40fc2f74a5c0a4e584b98a7b30fdd827
         </Menu>
       </SubComponents>
     </Menu>
