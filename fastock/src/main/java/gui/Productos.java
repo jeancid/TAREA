@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import modell.Producto;
 
 /**
- *
+ * ghghg
  * @author jeanc_000
  */
 public class Productos extends javax.swing.JFrame {
