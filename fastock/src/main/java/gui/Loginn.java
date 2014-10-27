@@ -52,6 +52,11 @@ public class Loginn extends javax.swing.JFrame {
         });
 
         AceptarBoton.setText("ACEPTAR");
+        AceptarBoton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AceptarBotonMouseClicked(evt);
+            }
+        });
         AceptarBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AceptarBotonActionPerformed(evt);
@@ -108,7 +113,7 @@ public class Loginn extends javax.swing.JFrame {
     }//GEN-LAST:event_CancelarBotonActionPerformed
 
     private void AceptarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarBotonActionPerformed
-
+           
         if (this.NombreField.getText().equals("") || this.PassField.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe llenar todos los campos");
         } else {
@@ -128,6 +133,26 @@ public class Loginn extends javax.swing.JFrame {
         }
 // TODO add your handling code here:
     }//GEN-LAST:event_AceptarBotonActionPerformed
+
+    private void AceptarBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AceptarBotonMouseClicked
+if (this.NombreField.getText().equals("") || this.PassField.getText().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Debe llenar todos los campos");
+        } else {
+            Usuario usuario = new Usuario();
+            usuario.setUsuario(this.NombreField.getText());
+            usuario.setPass(this.PassField.getText());
+            serviciodb serv = new serviciodb();
+            Usuario usuario2 = new Usuario();
+            usuario2 = serv.getUsuario();
+            if(usuario2.getPass().equals(usuario.getPass()) && usuario2.getUsuario().equals(usuario.getUsuario())){
+                Sistema menu = new Sistema();
+                menu.setVisible(true);
+                menu.setLocationRelativeTo(null);
+                this.dispose();
+            }else
+            JOptionPane.showMessageDialog(rootPane,"Algun campo no funciona");
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_AceptarBotonMouseClicked
 
     /**
      * @param args the command line arguments

@@ -190,9 +190,9 @@ public class Productos extends javax.swing.JFrame {
         this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_AtrasButtonActionPerformed
-
+/*
     private void AceptarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarButtonActionPerformed
-<<<<<<< HEAD
+
        String Precioaux; 
        Integer Precioreal=null;
        Precioreal = Integer.parseInt(Precioaux);
@@ -206,7 +206,7 @@ public class Productos extends javax.swing.JFrame {
         producto.setId_barra(this.CodigoFiel.getText());
         String Precioaux;Integer precioreal = null;
             Precioaux = this.CodigoFiel.getText();
->>>>>>> 40e5473c40fc2f74a5c0a4e584b98a7b30fdd827
+27
         try{
         	Precioreal=Integer.parseInt(Precioaux);
     	}catch(NumberFormatException ex){
@@ -241,6 +241,7 @@ public class Productos extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
