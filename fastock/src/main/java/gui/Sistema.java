@@ -66,6 +66,11 @@ public class Sistema extends javax.swing.JFrame {
         jMenu2.setText("Mantencion");
 
         jMenuItem1.setText("Agregar producto");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem1);
 
         AgregarProveeMenu.setText("Agregar proveedor");
@@ -179,6 +184,10 @@ public class Sistema extends javax.swing.JFrame {
          venta.setLocationRelativeTo(null);
          this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_VentaMenuActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
