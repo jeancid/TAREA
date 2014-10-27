@@ -68,6 +68,10 @@ public class Producto {
     public void setProveedor_id_rut(Integer proveedor_id_rut) {
         this.proveedor_id_rut = proveedor_id_rut;
     }
+
+    public void setproveedor_id_rut(Integer Rutreal) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
     

@@ -192,30 +192,33 @@ public class Productos extends javax.swing.JFrame {
     }//GEN-LAST:event_AtrasButtonActionPerformed
 
     private void AceptarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarButtonActionPerformed
-        if (this.CodigoFiel.getText().equals("") || this.NombreFiel.getText().equals("")|| 
-                this.PrecioFiel.getText().equals("") || this.RutFiel.getText().equals("")
-                || this.CategoriaFiel.getText().equals("")) {
+       String Precioaux; 
+       Integer Precioreal=null;
+       Precioreal = Integer.parseInt(Precioaux);
+        try{
+        	Precioreal=Integer.parseInt(Precioaux);
+    	}catch(NumberFormatException ex){
+                  JOptionPane.showMessageDialog(rootPane,"El precio debe sser un numero");
+    	}
+        Producto producto= new Producto();
+       producto.setPrecio(Precioreal);
+        if (this.CategoriaFiel.getText().equals("")
+                || this.CodigoFiel.getText().equals("") || this.NombreFiel.getText().equals("")|| 
+                this.PrecioFiel.getText().equals("") || this.RutFiel.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe llenar todos los campos");
         } else{
-        Producto producto= new Producto();
+        
         producto.setId_barra(this.CodigoFiel.getText());
-        String Precioaux;Integer precioreal;
-            Precioaux = this.CodigoFiel.getText();
-        try{
-        	precioreal=Integer.parseInt(Precioaux);
-    	}catch(NumberFormatException ex){
-        	System.out.println("No es un número");
-    	}
-        producto.setPrecio(precioreal);
+   
         producto.setNombre(this.NombreFiel.getText());
         String Rutaux;Integer Rutreal;
             Rutaux=this.RutFiel.getText();
         try{
         	Rutreal=Integer.parseInt(Rutaux);
     	}catch(NumberFormatException ex){
-        	System.out.println("No es un número");
+        	JOptionPane.showMessageDialog(rootPane,"Debe ingresas un rut valido");
     	}
-     //   producto.setproveedor_id_rut(Rutreal);
+       producto.setProveedor_id_rut(Rutreal);
         producto.setCategoria(this.CategoriaFiel.getText());
     //     statement.execute("insert into TProducto values('"+codProducto+"','"+nombre+"','"+precioCompra+"','"+precioVenta+"','"+fechaVencimiento+"','"+cantidad+"')");
           
