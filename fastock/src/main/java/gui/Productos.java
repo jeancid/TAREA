@@ -5,12 +5,9 @@
  */
 package gui;
 
-import javax.swing.JOptionPane;
-import modell.Producto;
-
 /**
- * ghghg
- * @author jeanc_000
+ *
+ * @author jean
  */
 public class Productos extends javax.swing.JFrame {
 
@@ -30,218 +27,151 @@ public class Productos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        CodigoFiel = new javax.swing.JTextField();
+        AgregarLabel = new javax.swing.JLabel();
         CodigoLabel = new javax.swing.JLabel();
-        NombreLabel = new javax.swing.JLabel();
-        CategoriaLabel = new javax.swing.JLabel();
+        CodigoField = new javax.swing.JTextField();
+        NombreField = new javax.swing.JTextField();
         PrecioLabel = new javax.swing.JLabel();
-        RutLabel = new javax.swing.JLabel();
-        NombreFiel = new javax.swing.JTextField();
-        CategoriaFiel = new javax.swing.JTextField();
-        PrecioFiel = new javax.swing.JTextField();
-        RutFiel = new javax.swing.JTextField();
-        AtrasButton = new javax.swing.JButton();
-        AceptarButton = new javax.swing.JButton();
-        LimpiarButton = new javax.swing.JButton();
+        PrecioField = new javax.swing.JTextField();
+        CategoriaLabel = new javax.swing.JLabel();
+        CategoriaBox = new javax.swing.JComboBox();
+        ProveedorLabel = new javax.swing.JLabel();
+        ProveedorField = new javax.swing.JTextField();
+        Aceptarboton = new javax.swing.JButton();
+        Limpiarbotn = new javax.swing.JButton();
+        AtrasBoton = new javax.swing.JButton();
+        NombreLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("AGREGAR PRODUCTO");
-
-        CodigoFiel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CodigoFielActionPerformed(evt);
-            }
-        });
+        AgregarLabel.setText("Agregar Producto");
 
         CodigoLabel.setText("Codigo de barra");
 
-        NombreLabel.setText("Nombre");
+        PrecioLabel.setText("Precio");
 
         CategoriaLabel.setText("Categoria");
 
-        PrecioLabel.setText("Precio");
+        CategoriaBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Liquidos", "Confites", "Abarrotes", "Fiambres" }));
 
-        RutLabel.setText("Rut proveedor");
+        ProveedorLabel.setText("Proveedor_id_rut");
 
-        NombreFiel.addActionListener(new java.awt.event.ActionListener() {
+        Aceptarboton.setText("Aceptar");
+
+        Limpiarbotn.setText("Limpiar");
+        Limpiarbotn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NombreFielActionPerformed(evt);
+                LimpiarbotnActionPerformed(evt);
             }
         });
 
-        AtrasButton.setText("ATRAS");
-        AtrasButton.addActionListener(new java.awt.event.ActionListener() {
+        AtrasBoton.setText("Atras");
+        AtrasBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AtrasButtonActionPerformed(evt);
+                AtrasBotonActionPerformed(evt);
             }
         });
 
-        AceptarButton.setText("ACEPTAR");
-        AceptarButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AceptarButtonActionPerformed(evt);
-            }
-        });
-
-        LimpiarButton.setText("LIMPIAR");
-        LimpiarButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LimpiarButtonActionPerformed(evt);
-            }
-        });
+        NombreLabel.setText("Nombre");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(48, 48, 48)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(CodigoLabel)
-                                    .addComponent(NombreLabel)
-                                    .addComponent(CategoriaLabel)
-                                    .addComponent(PrecioLabel)
-                                    .addComponent(RutLabel))
-                                .addGap(49, 49, 49)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(CodigoFiel)
-                                    .addComponent(NombreFiel)
-                                    .addComponent(CategoriaFiel)
-                                    .addComponent(PrecioFiel)
-                                    .addComponent(RutFiel, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(AtrasButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
-                        .addComponent(LimpiarButton)
-                        .addGap(84, 84, 84)))
-                .addComponent(AceptarButton)
-                .addContainerGap())
+                .addGap(26, 26, 26)
+                .addComponent(NombreLabel)
+                .addContainerGap(317, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(13, 13, 13)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(CodigoLabel)
+                                .addComponent(PrecioLabel)
+                                .addComponent(CategoriaLabel)
+                                .addComponent(ProveedorLabel))
+                            .addGap(40, 40, 40)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(CodigoField, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                                .addComponent(NombreField)
+                                .addComponent(PrecioField)
+                                .addComponent(ProveedorField)
+                                .addComponent(CategoriaBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(AtrasBoton)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
+                            .addComponent(Limpiarbotn)
+                            .addGap(92, 92, 92)
+                            .addComponent(Aceptarboton))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(144, 144, 144)
+                            .addComponent(AgregarLabel)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel1)
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CodigoFiel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CodigoLabel))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NombreLabel)
-                    .addComponent(NombreFiel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CategoriaLabel)
-                    .addComponent(CategoriaFiel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PrecioLabel)
-                    .addComponent(PrecioFiel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(RutLabel)
-                    .addComponent(RutFiel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AtrasButton)
-                    .addComponent(AceptarButton)
-                    .addComponent(LimpiarButton))
-                .addContainerGap())
+                .addGap(108, 108, 108)
+                .addComponent(NombreLabel)
+                .addContainerGap(175, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(AgregarLabel)
+                    .addGap(34, 34, 34)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(CodigoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(6, 6, 6)
+                            .addComponent(CodigoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(NombreField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(PrecioLabel)
+                        .addComponent(PrecioField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(CategoriaLabel)
+                        .addComponent(CategoriaBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(ProveedorLabel)
+                        .addComponent(ProveedorField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(AtrasBoton)
+                        .addComponent(Aceptarboton)
+                        .addComponent(Limpiarbotn))
+                    .addContainerGap()))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CodigoFielActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CodigoFielActionPerformed
+    private void LimpiarbotnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarbotnActionPerformed
+        this.CodigoField.setText("");
+        this.NombreField.setText("");
+        this.PrecioField.setText("");
+        this.ProveedorField.setText("");
         // TODO add your handling code here:
-    }//GEN-LAST:event_CodigoFielActionPerformed
+    }//GEN-LAST:event_LimpiarbotnActionPerformed
 
-    private void NombreFielActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreFielActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NombreFielActionPerformed
-
-    private void LimpiarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarButtonActionPerformed
-
-        this.NombreFiel.setText("");
-        this.CodigoFiel.setText("");
-        this.CategoriaFiel.setText("");
-        this.PrecioFiel.setText("");
-        this.RutFiel.setText("");
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LimpiarButtonActionPerformed
-
-    private void AtrasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasButtonActionPerformed
-
-        Sistema sistema = new Sistema();
+    private void AtrasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasBotonActionPerformed
+        Sistema sistema=new Sistema();
         sistema.setVisible(true);
         sistema.setLocationRelativeTo(null);
-        this.dispose();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AtrasButtonActionPerformed
-/*
-    private void AceptarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarButtonActionPerformed
+        this.dispose();// TODO add your handling code here:
+    }//GEN-LAST:event_AtrasBotonActionPerformed
 
-       String Precioaux; 
-       Integer Precioreal=null;
-       Precioreal = Integer.parseInt(Precioaux);
-=======
-        if (this.CodigoFiel.getText().equals("") || this.NombreFiel.getText().equals("")|| 
-                this.PrecioFiel.getText().equals("") || this.RutFiel.getText().equals("")
-                || this.CategoriaFiel.getText().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Debe llenar todos los campos");
-        } else{
-        Producto producto= new Producto();
-        producto.setId_barra(this.CodigoFiel.getText());
-        String Precioaux;Integer precioreal = null;
-            Precioaux = this.CodigoFiel.getText();
-27
-        try{
-        	Precioreal=Integer.parseInt(Precioaux);
-    	}catch(NumberFormatException ex){
-                  JOptionPane.showMessageDialog(rootPane,"El precio debe sser un numero");
-    	}
-        Producto producto= new Producto();
-       producto.setPrecio(Precioreal);
-        if (this.CategoriaFiel.getText().equals("")
-                || this.CodigoFiel.getText().equals("") || this.NombreFiel.getText().equals("")|| 
-                this.PrecioFiel.getText().equals("") || this.RutFiel.getText().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Debe llenar todos los campos");
-        } else{
-        
-        producto.setId_barra(this.CodigoFiel.getText());
-   
-        producto.setNombre(this.NombreFiel.getText());
-        String Rutaux;Integer Rutreal;
-            Rutaux=this.RutFiel.getText();
-        try{
-        	Rutreal=Integer.parseInt(Rutaux);
-    	}catch(NumberFormatException ex){
-        	JOptionPane.showMessageDialog(rootPane,"Debe ingresas un rut valido");
-    	}
-       producto.setProveedor_id_rut(Rutreal);
-        producto.setCategoria(this.CategoriaFiel.getText());
-    //     statement.execute("insert into TProducto values('"+codProducto+"','"+nombre+"','"+precioCompra+"','"+precioVenta+"','"+fechaVencimiento+"','"+cantidad+"')");
-          
-            JOptionPane.showMessageDialog(this, "Datos ingresados correctamente");
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AceptarButtonActionPerformed
- }
     /**
      * @param args the command line arguments
      */
-    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -275,19 +205,19 @@ public class Productos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AceptarButton;
-    private javax.swing.JButton AtrasButton;
-    private javax.swing.JTextField CategoriaFiel;
+    private javax.swing.JButton Aceptarboton;
+    private javax.swing.JLabel AgregarLabel;
+    private javax.swing.JButton AtrasBoton;
+    private javax.swing.JComboBox CategoriaBox;
     private javax.swing.JLabel CategoriaLabel;
-    private javax.swing.JTextField CodigoFiel;
+    private javax.swing.JTextField CodigoField;
     private javax.swing.JLabel CodigoLabel;
-    private javax.swing.JButton LimpiarButton;
-    private javax.swing.JTextField NombreFiel;
+    private javax.swing.JButton Limpiarbotn;
+    private javax.swing.JTextField NombreField;
     private javax.swing.JLabel NombreLabel;
-    private javax.swing.JTextField PrecioFiel;
+    private javax.swing.JTextField PrecioField;
     private javax.swing.JLabel PrecioLabel;
-    private javax.swing.JTextField RutFiel;
-    private javax.swing.JLabel RutLabel;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField ProveedorField;
+    private javax.swing.JLabel ProveedorLabel;
     // End of variables declaration//GEN-END:variables
 }

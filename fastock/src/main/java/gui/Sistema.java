@@ -128,11 +128,11 @@ public class Sistema extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 444, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGap(0, 332, Short.MAX_VALUE)
         );
 
         pack();
@@ -186,7 +186,11 @@ public class Sistema extends javax.swing.JFrame {
     }//GEN-LAST:event_VentaMenuActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+          Productos producto=new Productos();
+          producto.setVisible(true);
+          producto.setLocationRelativeTo(null);
+          this.dispose();
+// TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**

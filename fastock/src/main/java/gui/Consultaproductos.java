@@ -5,6 +5,8 @@
  */
 package gui;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author jean
@@ -14,6 +16,18 @@ public class Consultaproductos extends javax.swing.JFrame {
     /**
      * Creates new form Consultaproductos
      */
+    void mostrardatos(){
+        DefaultTableModel modelo=new DefaultTableModel();
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Precio");
+        modelo.addColumn("Stock");
+        modelo.addColumn("proveedor");
+        ProductoTable.setModel(modelo);
+        
+        
+     
+    }
     public Consultaproductos() {
         initComponents();
     }
@@ -42,18 +56,20 @@ public class Consultaproductos extends javax.swing.JFrame {
 
         ProductoTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "Nombre", "Codigo", "Precio", "Stock", "Proveedor"
+
             }
         ));
         jScrollPane1.setViewportView(ProductoTable);
 
         AceptarButton.setText("ACEPTAR");
+        AceptarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AceptarButtonActionPerformed(evt);
+            }
+        });
 
         MostrarLabel.setText("Mostrar todos los producto");
 
@@ -145,6 +161,10 @@ public class Consultaproductos extends javax.swing.JFrame {
         sistema.setLocationRelativeTo(null);
         this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void AceptarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarButtonActionPerformed
+        mostrardatos();        // TODO add your handling code here:
+    }//GEN-LAST:event_AceptarButtonActionPerformed
 
     /**
      * @param args the command line arguments

@@ -23,159 +23,170 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <Component id="NombreLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="317" max="32767" attributes="0"/>
+          </Group>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="CodigoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="PrecioLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="CategoriaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="ProveedorLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="CodigoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="NombreLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="CategoriaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="PrecioLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="RutLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="CodigoFiel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="NombreFiel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="CategoriaFiel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="PrecioFiel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="RutFiel" alignment="0" pref="143" max="32767" attributes="0"/>
-                              </Group>
+                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="CodigoField" alignment="0" pref="158" max="32767" attributes="0"/>
+                              <Component id="NombreField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="PrecioField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="ProveedorField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="CategoriaBox" alignment="0" max="32767" attributes="0"/>
                           </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="AtrasBoton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="119" max="32767" attributes="0"/>
+                          <Component id="Limpiarbotn" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+                          <Component id="Aceptarboton" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="144" max="-2" attributes="0"/>
+                          <Component id="AgregarLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="108" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="AtrasButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="91" max="32767" attributes="0"/>
-                      <Component id="LimpiarButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
-                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
-              <Component id="AceptarButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="CodigoFiel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="CodigoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
+              <Component id="NombreLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="175" max="32767" attributes="0"/>
+          </Group>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="AgregarLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="CodigoField" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                          <Component id="CodigoLabel" pref="22" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="NombreField" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="PrecioLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="PrecioField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="CategoriaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="CategoriaBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="ProveedorLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ProveedorField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="AtrasBoton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="Aceptarboton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="Limpiarbotn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="NombreLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="NombreFiel" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="CategoriaLabel" min="-2" max="-2" attributes="0"/>
-                  <Component id="CategoriaFiel" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="PrecioLabel" min="-2" max="-2" attributes="0"/>
-                  <Component id="PrecioFiel" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="RutLabel" min="-2" max="-2" attributes="0"/>
-                  <Component id="RutFiel" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="26" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="AtrasButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="AceptarButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="LimpiarButton" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="AgregarLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="AGREGAR PRODUCTO"/>
+        <Property name="text" type="java.lang.String" value="Agregar Producto"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="CodigoFiel">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CodigoFielActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="CodigoLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Codigo de barra"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="NombreLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Nombre"/>
-      </Properties>
+    <Component class="javax.swing.JTextField" name="CodigoField">
     </Component>
-    <Component class="javax.swing.JLabel" name="CategoriaLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Categoria"/>
-      </Properties>
+    <Component class="javax.swing.JTextField" name="NombreField">
     </Component>
     <Component class="javax.swing.JLabel" name="PrecioLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Precio"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="RutLabel">
+    <Component class="javax.swing.JTextField" name="PrecioField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="CategoriaLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Rut proveedor"/>
+        <Property name="text" type="java.lang.String" value="Categoria"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="NombreFiel">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NombreFielActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="CategoriaFiel">
-    </Component>
-    <Component class="javax.swing.JTextField" name="PrecioFiel">
-    </Component>
-    <Component class="javax.swing.JTextField" name="RutFiel">
-    </Component>
-    <Component class="javax.swing.JButton" name="AtrasButton">
+    <Component class="javax.swing.JComboBox" name="CategoriaBox">
       <Properties>
-        <Property name="text" type="java.lang.String" value="ATRAS"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Liquidos"/>
+            <StringItem index="1" value="Confites"/>
+            <StringItem index="2" value="Abarrotes"/>
+            <StringItem index="3" value="Fiambres"/>
+          </StringArray>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="ProveedorLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Proveedor_id_rut"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="ProveedorField">
+    </Component>
+    <Component class="javax.swing.JButton" name="Aceptarboton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Aceptar"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="Limpiarbotn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Limpiar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AtrasButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LimpiarbotnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="AceptarButton">
+    <Component class="javax.swing.JButton" name="AtrasBoton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="ACEPTAR"/>
+        <Property name="text" type="java.lang.String" value="Atras"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AceptarButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AtrasBotonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="LimpiarButton">
+    <Component class="javax.swing.JLabel" name="NombreLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="LIMPIAR"/>
+        <Property name="text" type="java.lang.String" value="Nombre"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LimpiarButtonActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>
