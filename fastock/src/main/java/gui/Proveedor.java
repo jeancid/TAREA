@@ -5,6 +5,8 @@
  */
 package gui;
 
+import servicioBD.serviciodb;
+
 /**
  *
  * @author cesar
@@ -68,6 +70,16 @@ public class Proveedor extends javax.swing.JFrame {
         });
 
         Aceptarboton.setText("Aceptar");
+        Aceptarboton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AceptarbotonMouseClicked(evt);
+            }
+        });
+        Aceptarboton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AceptarbotonActionPerformed(evt);
+            }
+        });
 
         Limpiarbotn.setText("Limpiar");
         Limpiarbotn.addActionListener(new java.awt.event.ActionListener() {
@@ -164,6 +176,20 @@ public class Proveedor extends javax.swing.JFrame {
         sistema.setLocationRelativeTo(null);
         this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_AtrasBotonActionPerformed
+
+    private void AceptarbotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarbotonActionPerformed
+        modell.Proveedor proveedor = new modell.Proveedor();
+        Integer rut=null;
+        rut=Integer.parseInt(this.RutField.getText());
+        proveedor.setId_rut(rut);
+        serviciodb serv = new serviciodb();
+        serv.setProveedor(proveedor);
+                // TODO add your handling code here:
+    }//GEN-LAST:event_AceptarbotonActionPerformed
+
+    private void AceptarbotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AceptarbotonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AceptarbotonMouseClicked
 
     /**
      * @param args the command line arguments

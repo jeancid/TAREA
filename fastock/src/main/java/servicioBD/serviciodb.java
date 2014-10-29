@@ -13,9 +13,11 @@ import java.sql.ResultSet;
 import java.util.Properties;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.swing.JOptionPane;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import modell.Usuario;
+import modell.Proveedor;
 
 /**
  *
@@ -133,6 +135,30 @@ public class serviciodb {
             logger.debug("Error al obtener usuario", e);
         }
         return usuario;
+    }
+    
+    public boolean setProveedor(Proveedor proveedor) {
+      
+        try {
+            
+                // Conectamos si no está conectado
+                if (!isConectado()) {
+                    conectar();
+                }
+
+                PreparedStatement st = null;
+                String query = "Insert into proveedor(id_rut)values(?) ";
+                st = conexion.prepareStatement(query);
+                st.setInt(1,proveedor.getId_rut());
+                
+                
+       
+        } catch (Exception e) {
+            proveedor = null;
+            logger.error(e.toString());
+            logger.debug("Error al obtener usuario", e);
+        }
+        
     }
 
 }
