@@ -179,8 +179,7 @@ public class Proveedor extends javax.swing.JFrame {
 
     private void AceptarbotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarbotonActionPerformed
         modell.Proveedor proveedor = new modell.Proveedor();
-        Integer rut=null;
-        rut=Integer.parseInt(this.RutField.getText());
+        Integer rut=Integer.parseInt(this.RutField.getText());
         proveedor.setId_rut(rut);
         serviciodb serv = new serviciodb();
         serv.setProveedor(proveedor);

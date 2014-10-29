@@ -137,8 +137,9 @@ public class serviciodb {
         return usuario;
     }
     
-    public boolean setProveedor(Proveedor proveedor) {
+    public void setProveedor(Proveedor proveedor) {
       
+//System.out.println(proveedor.getId_rut());
         try {
             
                 // Conectamos si no está conectado
@@ -150,6 +151,7 @@ public class serviciodb {
                 String query = "Insert into proveedor(id_rut)values(?) ";
                 st = conexion.prepareStatement(query);
                 st.setInt(1,proveedor.getId_rut());
+                st.executeUpdate();
                 
                 
        
@@ -157,6 +159,7 @@ public class serviciodb {
             proveedor = null;
             logger.error(e.toString());
             logger.debug("Error al obtener usuario", e);
+                
         }
         
     }
