@@ -5,6 +5,7 @@
  */
 package gui;
 
+import javax.swing.JOptionPane;
 import servicioBD.serviciodb;
 
 /**
@@ -19,7 +20,16 @@ public class Proveedor extends javax.swing.JFrame {
     public Proveedor() {
         initComponents();
     }
-
+    void limpiar ()
+    {
+        this.RutField.setText("");
+        this.DireccionField.setText("");
+        this.EmailField.setText("");
+        this.NombreField.setText("");
+        this.TelefonoField.setText("");
+        this.PaginaField.setText("");
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -167,7 +177,8 @@ public class Proveedor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LimpiarbotnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarbotnActionPerformed
-        this.RutField.setText("");                // TODO add your handling code here:
+        limpiar();
+        // TODO add your handling code here:
     }//GEN-LAST:event_LimpiarbotnActionPerformed
 
     private void AtrasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasBotonActionPerformed
@@ -192,7 +203,13 @@ public class Proveedor extends javax.swing.JFrame {
         proveedor.setPaginaweb(paginaweb);
         proveedor.setDireccion(direccion);
         serviciodb serv = new serviciodb();
-        serv.setProveedor(proveedor);
+        boolean pregunta = serv.setProveedor(proveedor);
+        if(pregunta==true){
+            JOptionPane.showMessageDialog(rootPane, "Fue guardado con exito");
+            limpiar();
+        }else 
+            JOptionPane.showMessageDialog(rootPane,"Ocurrio algun error");
+        
                 // TODO add your handling code here:
     }//GEN-LAST:event_AceptarbotonActionPerformed
 

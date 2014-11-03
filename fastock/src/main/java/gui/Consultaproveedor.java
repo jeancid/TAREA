@@ -5,6 +5,12 @@
  */
 package gui;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import javax.swing.table.DefaultTableModel;
+import modell.Proveedor;
+import servicioBD.serviciodb;
+
 /**
  *
  * @author jean
@@ -16,6 +22,40 @@ public class Consultaproveedor extends javax.swing.JFrame {
      */
     public Consultaproveedor() {
         initComponents();
+    }
+    
+    void mostrardatos(){
+        ArrayList<Proveedor> proveedores = new ArrayList<Proveedor>();
+        serviciodb serv = new serviciodb();
+        proveedores = serv.getProveedor();
+                
+        DefaultTableModel modelo=new DefaultTableModel();
+        modelo.addColumn("Rut");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Telefono");
+        modelo.addColumn("Email");
+        modelo.addColumn("Pagina web");
+        modelo.addColumn("Direccion");
+        ProveedorTable.setModel(modelo);
+        
+        String []datos=new String[6];
+        Iterator<Proveedor> ite=proveedores.iterator();
+        while(ite.hasNext()){
+        Proveedor proveedor1= ite.next();
+            datos[0]=proveedor1.getId_rut().toString();
+            datos[1]=proveedor1.getNombre();
+            datos[2]=proveedor1.getTelefono().toString();
+            datos[3]=proveedor1.getEmail();
+            datos[4]=proveedor1.getPaginaweb();
+            datos[5]=proveedor1.getDireccion();
+            
+            modelo.addRow(datos);
+        
+        }
+        ProveedorTable.setModel(modelo);
+        
+     
+     
     }
 
     /**
@@ -47,13 +87,10 @@ public class Consultaproveedor extends javax.swing.JFrame {
 
         ProveedorTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
-                "Rut", "Nombre", "Telefono", "Email", "Pagina web", "Direccion"
+
             }
         ));
         jScrollPane1.setViewportView(ProveedorTable);
@@ -68,6 +105,11 @@ public class Consultaproveedor extends javax.swing.JFrame {
         MostrarLabel.setText("Mostrar todos los proveedores");
 
         AceptarButton.setText("ACEPTAR");
+        AceptarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AceptarButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -128,6 +170,10 @@ public class Consultaproveedor extends javax.swing.JFrame {
         sistema.setLocationRelativeTo(null);
         this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_AtrasButtonActionPerformed
+
+    private void AceptarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarButtonActionPerformed
+        mostrardatos();// TODO add your handling code here:
+    }//GEN-LAST:event_AceptarButtonActionPerformed
 
     /**
      * @param args the command line arguments

@@ -27,11 +27,7 @@ public class Consultaproductos extends javax.swing.JFrame {
         
     }
       
-     void mostrardatos1(){
-        List<Producto> productos = new ArrayList<Producto>();
-        serviciodb serv = new serviciodb();
-        productos=serv.getProduto();
-     }
+     
      
     void mostrardatos(){
         ArrayList<Producto> productos = new ArrayList<Producto>();

@@ -143,8 +143,8 @@ public class serviciodb {
         return usuario;
     }
     
-    public void setProveedor(Proveedor proveedor) {
-      
+    public boolean setProveedor(Proveedor proveedor) {
+      boolean pregunta =false;
 //System.out.println(proveedor.getId_rut());
         try {
             
@@ -163,20 +163,21 @@ public class serviciodb {
                 st.setString(5, proveedor.getPaginaweb());
                 st.setString(6, proveedor.getDireccion());
                 st.executeUpdate();
-                
+                pregunta=true;
                 
        
         } catch (Exception e) {
             proveedor = null;
             logger.error(e.toString());
             logger.debug("Error al obtener usuario", e);
+            pregunta = false;
                 
         }
-        
+        return pregunta;
     }
     
-     public void setProducto(Producto producto) {
-      
+     public boolean setProducto(Producto producto) {
+      boolean pregunta =false;
 
         try {
             
@@ -195,16 +196,16 @@ public class serviciodb {
                 st.setString(5, producto.getCategoria());
                 st.setInt(6, producto.getProveedor_id_rut());
                 st.executeUpdate();
-                
+                pregunta=true;
                 
        
         } catch (Exception e) {
             producto = null;
             logger.error(e.toString());
             logger.debug("Error al obtener usuario", e);
-                
+            pregunta = false;
         }
-        
+        return pregunta;
     }
    
      
@@ -246,6 +247,47 @@ public class serviciodb {
             logger.debug("Error al obtener producto", e);
         }
         return productos;
+    }
+     
+     
+     public ArrayList<Proveedor> getProveedor(){
+        ArrayList<Proveedor> proveedores = new ArrayList<Proveedor>();
+        try {
+            
+                // Conectamos si no está conectado
+                if (!isConectado()) {
+                    conectar();
+                }
+
+                PreparedStatement st = null;
+                String query = "SELECT * FROM proveedor ";
+                st = conexion.prepareStatement(query);
+                if (st != null) {
+
+                    ResultSet rs = st.executeQuery();
+                    
+                    if (rs != null) {
+                        while (rs.next()) {
+                            Proveedor proveedor = new Proveedor();
+                            proveedor.setId_rut(rs.getInt(1));
+                            proveedor.setNombre(rs.getString(2));
+                            proveedor.setTelefono(rs.getInt(3));
+                            proveedor.setEmail(rs.getString(4));
+                            proveedor.setPaginaweb(rs.getString(5));
+                            proveedor.setDireccion(rs.getString(6));
+                            proveedores.add(proveedor);
+                        } 
+                        rs.close();
+                    }
+                    st.close();
+                }
+       
+        } catch (Exception e) {
+            proveedores = null;
+            logger.error(e.toString());
+            logger.debug("Error al obtener producto", e);
+        }
+        return proveedores;
     }
               
      }

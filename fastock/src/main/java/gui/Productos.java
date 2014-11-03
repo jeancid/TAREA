@@ -19,6 +19,13 @@ public class Productos extends javax.swing.JFrame {
     public Productos() {
         initComponents();
     }
+    void Limpiar(){
+        this.CodigoField.setText("");
+        this.NombreField.setText("");
+        this.PrecioField.setText("");
+        this.ProveedorField.setText("");
+        this.CantidadField.setText("");
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -85,6 +92,12 @@ public class Productos extends javax.swing.JFrame {
 
         CantidadLabel.setText("Cantidad");
 
+        CantidadField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CantidadFieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -93,11 +106,13 @@ public class Productos extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(NombreLabel)
+                        .addContainerGap(327, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(CantidadLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
-                        .addComponent(CantidadField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(NombreLabel))
-                .addGap(59, 59, 59))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(CantidadField, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(77, 77, 77))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -134,11 +149,11 @@ public class Productos extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(108, 108, 108)
                 .addComponent(NombreLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CantidadLabel)
                     .addComponent(CantidadField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(100, 100, 100))
+                .addGap(127, 127, 127))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -175,10 +190,7 @@ public class Productos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LimpiarbotnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarbotnActionPerformed
-        this.CodigoField.setText("");
-        this.NombreField.setText("");
-        this.PrecioField.setText("");
-        this.ProveedorField.setText("");
+        Limpiar();
         // TODO add your handling code here:
     }//GEN-LAST:event_LimpiarbotnActionPerformed
 
@@ -204,9 +216,18 @@ public class Productos extends javax.swing.JFrame {
         producto.setProveedor_id_rut(proveedorid);
         producto.setCategoria(categoria);
         serviciodb serv = new serviciodb();
-        serv.setProducto(producto);
+        boolean pregunta = serv.setProducto(producto);
+        if(pregunta==true){
+            JOptionPane.showMessageDialog(rootPane, "Fue guardado con exito");
+            Limpiar();
+        }else 
+            JOptionPane.showMessageDialog(rootPane,"Ocurrio algun error");
 // TODO add your handling code here:
     }//GEN-LAST:event_AceptarbotonActionPerformed
+
+    private void CantidadFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CantidadFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CantidadFieldActionPerformed
 
     /**
      * @param args the command line arguments
