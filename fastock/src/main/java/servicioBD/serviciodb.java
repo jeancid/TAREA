@@ -223,13 +223,10 @@ public class serviciodb {
                 if (st != null) {
 
                     ResultSet rs = st.executeQuery();
-                    Producto producto = new Producto();
+                    
                     if (rs != null) {
-                        if (rs.next()) {
-                            
-                            
-                            
-                            
+                        while (rs.next()) {
+                            Producto producto = new Producto();
                             producto.setId_barra(rs.getString(1));
                             producto.setPrecio(rs.getInt(2));
                             producto.setNombre(rs.getString(3));
@@ -237,9 +234,7 @@ public class serviciodb {
                             producto.setCategoria(rs.getString(5));
                             producto.setProveedor_id_rut(rs.getInt(6));
                             productos.add(producto);
-                        } else {
-                            logger.info("No existe producto: ");
-                        }
+                        } 
                         rs.close();
                     }
                     st.close();

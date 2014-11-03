@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package gui;
+import javax.swing.JOptionPane;
 import modell.Producto; 
 import servicioBD.serviciodb;
 /**
@@ -195,7 +196,7 @@ public class Productos extends javax.swing.JFrame {
         String nombre =this.NombreField.getText();
         Integer cantidad= Integer.parseInt(this.CantidadField.getText());
         Integer proveedorid= Integer.parseInt(this.ProveedorField.getText());
-        String categoria = this.CategoriaBox.getToolTipText();
+        String categoria = this.CategoriaBox.getSelectedItem().toString();
         producto.setId_barra(codigo);
         producto.setNombre(nombre);
         producto.setPrecio(precio);
