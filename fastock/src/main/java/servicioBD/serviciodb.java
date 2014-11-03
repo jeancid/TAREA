@@ -10,7 +10,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
+import java.util.logging.Level;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.swing.JOptionPane;
@@ -201,5 +206,51 @@ public class serviciodb {
         }
         
     }
+   
+     
+     public ArrayList<Producto> getProduto(){
+        ArrayList<Producto> productos = new ArrayList<Producto>();
+        try {
+            
+                // Conectamos si no está conectado
+                if (!isConectado()) {
+                    conectar();
+                }
 
-}
+                PreparedStatement st = null;
+                String query = "SELECT * FROM producto ";
+                st = conexion.prepareStatement(query);
+                if (st != null) {
+
+                    ResultSet rs = st.executeQuery();
+                    Producto producto = new Producto();
+                    if (rs != null) {
+                        if (rs.next()) {
+                            
+                            
+                            
+                            
+                            producto.setId_barra(rs.getString(1));
+                            producto.setPrecio(rs.getInt(2));
+                            producto.setNombre(rs.getString(3));
+                            producto.setCantidad(rs.getInt(4));
+                            producto.setCategoria(rs.getString(5));
+                            producto.setProveedor_id_rut(rs.getInt(6));
+                            productos.add(producto);
+                        } else {
+                            logger.info("No existe producto: ");
+                        }
+                        rs.close();
+                    }
+                    st.close();
+                }
+       
+        } catch (Exception e) {
+            productos = null;
+            logger.error(e.toString());
+            logger.debug("Error al obtener producto", e);
+        }
+        return productos;
+    }
+              
+     }

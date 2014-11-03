@@ -5,7 +5,12 @@
  */
 package gui;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import modell.Producto;
+import servicioBD.serviciodb;
 
 /**
  *
@@ -16,21 +21,55 @@ public class Consultaproductos extends javax.swing.JFrame {
     /**
      * Creates new form Consultaproductos
      */
+    
+      public Consultaproductos() {
+        initComponents();
+        
+    }
+      
+     void mostrardatos1(){
+        List<Producto> productos = new ArrayList<Producto>();
+        serviciodb serv = new serviciodb();
+        productos=serv.getProduto();
+     }
+     
     void mostrardatos(){
+        ArrayList<Producto> productos = new ArrayList<Producto>();
+        serviciodb serv = new serviciodb();
+        productos=serv.getProduto();
+        
+        
+        
+        
+        
         DefaultTableModel modelo=new DefaultTableModel();
-        modelo.addColumn("Nombre");
         modelo.addColumn("Codigo");
         modelo.addColumn("Precio");
+        modelo.addColumn("Nombre");
         modelo.addColumn("Stock");
+        modelo.addColumn("Categoria");
         modelo.addColumn("proveedor");
         ProductoTable.setModel(modelo);
         
+        String []datos=new String[6];
+        Iterator<Producto> ite=productos.iterator();
+        while(ite.hasNext()){
+        Producto producto1= ite.next();
+            datos[0]=producto1.getId_barra();
+            datos[1]=producto1.getPrecio().toString();
+            datos[2]=producto1.getNombre();
+            datos[3]=producto1.getCantidad().toString();
+            datos[4]=producto1.getCategoria();
+            datos[5]=producto1.getProveedor_id_rut().toString();
+            modelo.addRow(datos);
+        
+        }
+        ProductoTable.setModel(modelo);
         
      
+     
     }
-    public Consultaproductos() {
-        initComponents();
-    }
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -163,7 +202,8 @@ public class Consultaproductos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void AceptarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarButtonActionPerformed
-        mostrardatos();        // TODO add your handling code here:
+                mostrardatos();
+// TODO add your handling code here:
     }//GEN-LAST:event_AceptarButtonActionPerformed
 
     /**
