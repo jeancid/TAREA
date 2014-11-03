@@ -18,6 +18,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import modell.Usuario;
 import modell.Proveedor;
+import modell.Producto;
 
 /**
  *
@@ -148,15 +149,52 @@ public class serviciodb {
                 }
 
                 PreparedStatement st = null;
-                String query = "Insert into proveedor(id_rut)values(?) ";
+                String query = "Insert into proveedor(id_rut,nombre,telefono,email,paginaweb,direccion)values(?,?,?,?,?,?) ";
                 st = conexion.prepareStatement(query);
                 st.setInt(1,proveedor.getId_rut());
+                st.setString(2, proveedor.getNombre());
+                st.setInt(3,proveedor.getTelefono());
+                st.setString(4,proveedor.getEmail());
+                st.setString(5, proveedor.getPaginaweb());
+                st.setString(6, proveedor.getDireccion());
                 st.executeUpdate();
                 
                 
        
         } catch (Exception e) {
             proveedor = null;
+            logger.error(e.toString());
+            logger.debug("Error al obtener usuario", e);
+                
+        }
+        
+    }
+    
+     public void setProducto(Producto producto) {
+      
+
+        try {
+            
+                // Conectamos si no está conectado
+                if (!isConectado()) {
+                    conectar();
+                }
+
+                PreparedStatement st = null;
+                String query = "Insert into producto(id_barra,precio,nombre,cantidad,categoria,proveedor_id_rut)values(?,?,?,?,?,?) ";
+                st = conexion.prepareStatement(query);
+                st.setString(1,producto.getId_barra());
+                st.setInt(2, producto.getPrecio());
+                st.setString(3,producto.getNombre());
+                st.setInt(4,producto.getCantidad());
+                st.setString(5, producto.getCategoria());
+                st.setInt(6, producto.getProveedor_id_rut());
+                st.executeUpdate();
+                
+                
+       
+        } catch (Exception e) {
+            producto = null;
             logger.error(e.toString());
             logger.debug("Error al obtener usuario", e);
                 

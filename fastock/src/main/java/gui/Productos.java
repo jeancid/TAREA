@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package gui;
-
+import modell.Producto; 
+import servicioBD.serviciodb;
 /**
  *
  * @author jean
@@ -41,6 +42,8 @@ public class Productos extends javax.swing.JFrame {
         Limpiarbotn = new javax.swing.JButton();
         AtrasBoton = new javax.swing.JButton();
         NombreLabel = new javax.swing.JLabel();
+        CantidadLabel = new javax.swing.JLabel();
+        CantidadField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,6 +60,11 @@ public class Productos extends javax.swing.JFrame {
         ProveedorLabel.setText("Proveedor_id_rut");
 
         Aceptarboton.setText("Aceptar");
+        Aceptarboton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AceptarbotonActionPerformed(evt);
+            }
+        });
 
         Limpiarbotn.setText("Limpiar");
         Limpiarbotn.addActionListener(new java.awt.event.ActionListener() {
@@ -74,14 +82,21 @@ public class Productos extends javax.swing.JFrame {
 
         NombreLabel.setText("Nombre");
 
+        CantidadLabel.setText("Cantidad");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(NombreLabel)
-                .addContainerGap(317, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(CantidadLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                        .addComponent(CantidadField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(NombreLabel))
+                .addGap(59, 59, 59))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -103,7 +118,7 @@ public class Productos extends javax.swing.JFrame {
                             .addGap(0, 0, Short.MAX_VALUE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addComponent(AtrasBoton)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                             .addComponent(Limpiarbotn)
                             .addGap(92, 92, 92)
                             .addComponent(Aceptarboton))
@@ -118,7 +133,11 @@ public class Productos extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(108, 108, 108)
                 .addComponent(NombreLabel)
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CantidadLabel)
+                    .addComponent(CantidadField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(100, 100, 100))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -143,7 +162,7 @@ public class Productos extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(ProveedorLabel)
                         .addComponent(ProveedorField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(AtrasBoton)
                         .addComponent(Aceptarboton)
@@ -168,6 +187,25 @@ public class Productos extends javax.swing.JFrame {
         sistema.setLocationRelativeTo(null);
         this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_AtrasBotonActionPerformed
+
+    private void AceptarbotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarbotonActionPerformed
+        Producto producto= new Producto();
+        String codigo= this.CodigoField.getText();
+        Integer precio= Integer.parseInt(this.PrecioField.getText());
+        String nombre =this.NombreField.getText();
+        Integer cantidad= Integer.parseInt(this.CantidadField.getText());
+        Integer proveedorid= Integer.parseInt(this.ProveedorField.getText());
+        String categoria = this.CategoriaBox.getToolTipText();
+        producto.setId_barra(codigo);
+        producto.setNombre(nombre);
+        producto.setPrecio(precio);
+        producto.setCantidad(cantidad);
+        producto.setProveedor_id_rut(proveedorid);
+        producto.setCategoria(categoria);
+        serviciodb serv = new serviciodb();
+        serv.setProducto(producto);
+// TODO add your handling code here:
+    }//GEN-LAST:event_AceptarbotonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,6 +246,8 @@ public class Productos extends javax.swing.JFrame {
     private javax.swing.JButton Aceptarboton;
     private javax.swing.JLabel AgregarLabel;
     private javax.swing.JButton AtrasBoton;
+    private javax.swing.JTextField CantidadField;
+    private javax.swing.JLabel CantidadLabel;
     private javax.swing.JComboBox CategoriaBox;
     private javax.swing.JLabel CategoriaLabel;
     private javax.swing.JTextField CodigoField;

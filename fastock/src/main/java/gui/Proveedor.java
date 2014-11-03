@@ -180,7 +180,17 @@ public class Proveedor extends javax.swing.JFrame {
     private void AceptarbotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarbotonActionPerformed
         modell.Proveedor proveedor = new modell.Proveedor();
         Integer rut=Integer.parseInt(this.RutField.getText());
+        Integer telefono=Integer.parseInt(this.TelefonoField.getText());
+        String nombre= this.NombreField.getText();
+        String email=this.EmailField.getText();
+        String paginaweb=this.PaginaField.getText();
+        String direccion=this.DireccionField.getText();
         proveedor.setId_rut(rut);
+        proveedor.setNombre(nombre);
+        proveedor.setTelefono(telefono);
+        proveedor.setEmail(email);
+        proveedor.setPaginaweb(paginaweb);
+        proveedor.setDireccion(direccion);
         serviciodb serv = new serviciodb();
         serv.setProveedor(proveedor);
                 // TODO add your handling code here:
