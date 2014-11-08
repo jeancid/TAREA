@@ -10,15 +10,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
-import java.util.logging.Level;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.swing.JOptionPane;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import modell.Usuario;
@@ -214,6 +209,7 @@ public class serviciodb {
         ArrayList<Producto> productos = new ArrayList<Producto>();
         try {
             
+            
                 // Conectamos si no está conectado
                 if (!isConectado()) {
                     conectar();
@@ -337,4 +333,140 @@ public class serviciodb {
         return proveedores;
     }
               
+    public ArrayList<Producto> getBuscarProducto(String nombre){
+     ArrayList<Producto> productos=new ArrayList<Producto>();
+     try {
+         if (!StringUtils.isEmpty(nombre)) {
+                // Conectamos si no está conectado
+                if (!isConectado()) {
+                    conectar();
      }
+         
+         PreparedStatement st = null;
+                String query = "SELECT*FROM producto WHERE nombre=?";
+                st = conexion.prepareStatement(query);
+              
+                if(st !=null){
+                    st.setString(1, nombre);
+                    ResultSet rs = st.executeQuery();
+                         
+                    if (rs != null) {
+                        while (rs.next()) {
+                            Producto producto = new Producto();
+                            producto.setId_barra(rs.getString(1));
+                            producto.setPrecio(rs.getInt(2));
+                            producto.setNombre(rs.getString(3));
+                            producto.setCantidad(rs.getInt(4));
+                            producto.setCategoria(rs.getString(5));
+                            producto.setProveedor_id_rut(rs.getInt(6));
+                            
+                            productos.add(producto);
+                        }
+                        
+                    }
+                    st.close();
+                }}
+         else {
+                logger.info("ERROR: nombre nulo");
+            }
+                    
+                         
+     }
+     
+     catch (Exception e) {
+            productos = null;
+            logger.error(e.toString());
+            logger.debug("Error al obtener producto", e);
+        }
+      return productos;   
+     }
+    
+    public Producto getProduto(String sql){
+        Producto producto = new Producto();
+        try {
+                // Conectamos si no está conectado
+                if (!isConectado()) {
+                    conectar();
+                }
+
+                PreparedStatement st = null;
+                String query = sql;
+                st = conexion.prepareStatement(query);
+                if (st != null) {
+
+                    ResultSet rs = st.executeQuery();
+                    
+                    if (rs != null) {
+                        rs.next();
+                            
+                            producto.setId_barra(rs.getString(1));
+                            producto.setPrecio(rs.getInt(2));
+                            producto.setNombre(rs.getString(3));
+                            producto.setCantidad(rs.getInt(4));
+                            producto.setCategoria(rs.getString(5));
+                            producto.setProveedor_id_rut(rs.getInt(6));
+                          
+                        
+                        rs.close();
+                    }
+                    st.close();
+                }
+       
+        } catch (Exception e) {
+            producto = null;
+            logger.error(e.toString());
+            logger.debug("Error al obtener producto", e);
+        }
+        return producto;
+    }
+    
+    public boolean eliminarProducto(String sql){
+     boolean pregunta=false;
+     
+        try {
+                // Conectamos si no está conectado
+                if (!isConectado()) {
+                    conectar();
+                }
+                PreparedStatement st = conexion.prepareStatement(sql);
+                st.executeUpdate();
+                pregunta=true;
+                
+        } catch (Exception e) {
+            logger.error(e.toString());
+            logger.debug("Error al eliminar producto", e);
+        }
+        return pregunta;
+        
+                                            }
+    
+    public boolean modificarProducto(String sql,Producto producto) {
+      boolean pregunta =false;
+
+        try {
+            // Conectamos si no está conectado
+                if (!isConectado()) {
+                    conectar();     }
+                PreparedStatement st = null;
+                String query = "update producto set precio=?,nombre=?,cantidad=?,categoria=? where id_barra=?";
+                st = conexion.prepareStatement(query);
+                
+                st.setInt(1, producto.getPrecio());
+                st.setString(2,producto.getNombre());
+                st.setInt(3,producto.getCantidad());
+                st.setString(4, producto.getCategoria());
+                st.setString(5, sql);
+                st.executeUpdate();
+                pregunta=true;
+       
+        } catch (Exception e) {
+            logger.error(e.toString());
+            logger.debug("Error al modificar producto", e);
+            pregunta = false;
+        }
+        return pregunta;
+    }
+         
+}
+
+

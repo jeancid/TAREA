@@ -7,7 +7,6 @@ package gui;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modell.Producto;
@@ -46,7 +45,7 @@ public class Consultaproductos extends javax.swing.JFrame {
         modelo.addColumn("Codigo");
         modelo.addColumn("Precio");
         modelo.addColumn("Nombre");
-        modelo.addColumn("Stock");
+        modelo.addColumn("Cantidad");
         modelo.addColumn("Categoria");
         modelo.addColumn("proveedor");
         ProductoTable.setModel(modelo);
@@ -100,9 +99,9 @@ public class Consultaproductos extends javax.swing.JFrame {
         PrecioField = new javax.swing.JTextField();
         NombreField = new javax.swing.JTextField();
         CodigoField = new javax.swing.JTextField();
-        ActualizarBoton = new javax.swing.JButton();
         EliminarBoton = new javax.swing.JButton();
         NuevoBoton = new javax.swing.JButton();
+        modificarBoton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -117,6 +116,11 @@ public class Consultaproductos extends javax.swing.JFrame {
 
             }
         ));
+        ProductoTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ProductoTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(ProductoTable);
 
         Guardar.setText("Guardar");
@@ -134,7 +138,12 @@ public class Consultaproductos extends javax.swing.JFrame {
             }
         });
 
-        BuscarButton.setText("BUSCAR");
+        BuscarButton.setText("Buscar");
+        BuscarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarButtonActionPerformed(evt);
+            }
+        });
 
         AtrasBoton.setText("Volver al menú principal");
         AtrasBoton.addActionListener(new java.awt.event.ActionListener() {
@@ -174,50 +183,50 @@ public class Consultaproductos extends javax.swing.JFrame {
             }
         });
 
-        ActualizarBoton.setText("Actualizar");
-        ActualizarBoton.addActionListener(new java.awt.event.ActionListener() {
+        EliminarBoton.setText("Eliminar");
+        EliminarBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ActualizarBotonActionPerformed(evt);
+                EliminarBotonActionPerformed(evt);
             }
         });
 
-        EliminarBoton.setText("Eliminar");
-
         NuevoBoton.setText("Nuevo");
+        NuevoBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NuevoBotonActionPerformed(evt);
+            }
+        });
+
+        modificarBoton.setText("Modificar");
+        modificarBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarBotonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(NuevoBoton)
-                                .addGap(18, 18, 18)
-                                .addComponent(EliminarBoton)
-                                .addGap(18, 18, 18)
-                                .addComponent(ActualizarBoton)
-                                .addGap(18, 18, 18)
-                                .addComponent(Guardar))
-                            .addComponent(AtrasBoton, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(BuscarField)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(BuscarField)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(ProveedorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(CodigoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(NombreLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(PrecioLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(CantidadLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CategoriaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(ProveedorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(CodigoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(NombreLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(PrecioLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(CategoriaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(CantidadLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ProveedorField)
@@ -225,7 +234,19 @@ public class Consultaproductos extends javax.swing.JFrame {
                             .addComponent(NombreField)
                             .addComponent(PrecioField)
                             .addComponent(CategoriaBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(CantidadField))))
+                            .addComponent(CantidadField)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(NuevoBoton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(modificarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(EliminarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(AtrasBoton)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -237,44 +258,40 @@ public class Consultaproductos extends javax.swing.JFrame {
                     .addComponent(BuscarButton)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
                 .addGap(10, 10, 10)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(ProveedorLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CodigoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(NombreLabel)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(38, 38, 38)
-                                .addComponent(PrecioLabel)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(CategoriaLabel)
-                        .addGap(14, 14, 14)
-                        .addComponent(CantidadLabel))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(ProveedorField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CodigoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(NombreField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(PrecioField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15)
-                        .addComponent(CategoriaBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CantidadField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ProveedorField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ProveedorLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CodigoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CodigoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(NombreField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NombreLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(PrecioField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PrecioLabel))
+                .addGap(15, 15, 15)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CategoriaBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CategoriaLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CantidadField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CantidadLabel))
                 .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Guardar)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(EliminarBoton)
-                        .addComponent(NuevoBoton)
-                        .addComponent(ActualizarBoton)))
-                .addGap(18, 18, 18)
-                .addComponent(AtrasBoton))
+                    .addComponent(EliminarBoton)
+                    .addComponent(modificarBoton)
+                    .addComponent(NuevoBoton))
+                .addGap(31, 31, 31)
+                .addComponent(AtrasBoton)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -292,11 +309,6 @@ public class Consultaproductos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void ActualizarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarBotonActionPerformed
-        mostrardatos();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ActualizarBotonActionPerformed
 
     private void NombreFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreFieldActionPerformed
         // TODO add your handling code here:
@@ -322,6 +334,7 @@ public class Consultaproductos extends javax.swing.JFrame {
     }//GEN-LAST:event_BuscarFieldActionPerformed
 
     private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
+        
         Producto producto= new Producto();
         String codigo= this.CodigoField.getText();
         Integer precio= Integer.parseInt(this.PrecioField.getText());
@@ -342,9 +355,108 @@ public class Consultaproductos extends javax.swing.JFrame {
             Limpiar();
         }else
         JOptionPane.showMessageDialog(rootPane,"Ocurrio algun error");
+        mostrardatos();
         // TODO add your handling code here:
     }//GEN-LAST:event_GuardarActionPerformed
 
+    private void BuscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarButtonActionPerformed
+         ArrayList<Producto> productos = new ArrayList<Producto>();
+       serviciodb serv = new serviciodb();
+        String nombrepro= this.BuscarField.getText();
+        productos = serv.getBuscarProducto(nombrepro);
+      
+        DefaultTableModel modelo=new DefaultTableModel();
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Precio");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Cantidad");
+        modelo.addColumn("Categoria");
+        modelo.addColumn("proveedor");
+        ProductoTable.setModel(modelo);
+        
+        String []datos=new String[6];
+        Iterator<Producto> ite=productos.iterator();
+        if(!productos.isEmpty()){
+        while(ite.hasNext()){
+        Producto producto1= ite.next();
+            datos[0]=producto1.getId_barra();
+            datos[1]=producto1.getPrecio().toString();
+            datos[2]=producto1.getNombre();
+            datos[3]=producto1.getCantidad().toString();
+            datos[4]=producto1.getCategoria();
+            datos[5]=producto1.getProveedor_id_rut().toString();
+            modelo.addRow(datos);
+        }
+            ProductoTable.setModel(modelo);        
+        // TODO add your handling code here:
+                                                
+    }
+    }//GEN-LAST:event_BuscarButtonActionPerformed
+
+    private void NuevoBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevoBotonActionPerformed
+            Limpiar();
+            // TODO add your handling code here:
+    }//GEN-LAST:event_NuevoBotonActionPerformed
+
+    private void ProductoTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProductoTableMouseClicked
+        Producto producto=new Producto();
+        if(evt.getButton()==1){
+        int fila = ProductoTable.getSelectedRow();
+        String sql= "select * from producto where id_barra=" + ProductoTable.getValueAt(fila, 0);
+        serviciodb serv = new serviciodb();
+        producto=serv.getProduto(sql);
+        this.ProveedorField.setText(producto.getProveedor_id_rut().toString());
+        this.CantidadField.setText(producto.getCantidad().toString());
+        this.NombreField.setText(producto.getNombre());
+        this.PrecioField.setText(producto.getPrecio().toString());
+        this.CodigoField.setText(producto.getId_barra());
+        //this.CategoriaBox.setName(producto.getCategoria());
+        
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ProductoTableMouseClicked
+
+    private void EliminarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarBotonActionPerformed
+        // TODO add your handling code here:
+        
+        int fila = ProductoTable.getSelectedRow();
+        String sql= "delete from producto where id_barra=" + ProductoTable.getValueAt(fila, 0);
+        serviciodb serv = new serviciodb();
+        boolean pregunta=serv.eliminarProducto(sql);
+        if(pregunta==true){
+            JOptionPane.showMessageDialog(rootPane, "El producto fue eliminado");
+            Limpiar();
+        }else
+        JOptionPane.showMessageDialog(rootPane,"Ocurrio algun error");
+        mostrardatos();
+    }//GEN-LAST:event_EliminarBotonActionPerformed
+
+    private void modificarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarBotonActionPerformed
+            Producto producto=new Producto();
+            int fila = ProductoTable.getSelectedRow();
+            String sql= ProductoTable.getValueAt(fila, 0).toString();
+            //No modificar llaves!
+            Integer precio= Integer.parseInt(this.PrecioField.getText());
+            String nombre =this.NombreField.getText();
+            Integer cantidad= Integer.parseInt(this.CantidadField.getText());
+            String categoria = this.CategoriaBox.getSelectedItem().toString();
+            producto.setNombre(nombre);
+            producto.setPrecio(precio);
+            producto.setCantidad(cantidad);
+            producto.setCategoria(categoria);
+            
+            serviciodb serv = new serviciodb();
+            boolean pregunta = serv.modificarProducto(sql,producto);
+            if(pregunta==true){
+            JOptionPane.showMessageDialog(rootPane, "El producto fue modificado");
+            Limpiar();
+            }else
+            JOptionPane.showMessageDialog(rootPane,"Ocurrio algun error");
+            mostrardatos();
+        
+    }//GEN-LAST:event_modificarBotonActionPerformed
+
+        
     /**
      * @param args the command line arguments
      */
@@ -381,7 +493,6 @@ public class Consultaproductos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ActualizarBoton;
     private javax.swing.JButton AtrasBoton;
     private javax.swing.JButton BuscarButton;
     private javax.swing.JTextField BuscarField;
@@ -404,5 +515,6 @@ public class Consultaproductos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton modificarBoton;
     // End of variables declaration//GEN-END:variables
 }
