@@ -7,6 +7,7 @@ package gui;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modell.Proveedor;
 import servicioBD.serviciodb;
@@ -84,6 +85,11 @@ public class Consultaproveedor extends javax.swing.JFrame {
         buscarLabel.setText("Buscar Proveedor por nombre");
 
         BuscarButton.setText("BUSCAR");
+        BuscarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarButtonActionPerformed(evt);
+            }
+        });
 
         ProveedorTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -174,6 +180,45 @@ public class Consultaproveedor extends javax.swing.JFrame {
     private void AceptarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarButtonActionPerformed
         mostrardatos();// TODO add your handling code here:
     }//GEN-LAST:event_AceptarButtonActionPerformed
+
+    private void BuscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarButtonActionPerformed
+        ArrayList<Proveedor> proveedorNombre = new ArrayList<Proveedor>();
+        serviciodb serv = new serviciodb();
+        String nombrepro= this.BuscarField.getText();
+        proveedorNombre = serv.getBuscarProveedor(nombrepro);
+      
+        DefaultTableModel modelo=new DefaultTableModel();
+        modelo.addColumn("Rut");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Telefono");
+        modelo.addColumn("Email");
+        modelo.addColumn("Pagina web");
+        modelo.addColumn("Direccion");
+        ProveedorTable.setModel(modelo);   
+        
+        String []datos=new String[6];
+        Iterator<Proveedor> ite=proveedorNombre.iterator();
+        if(!proveedorNombre.isEmpty()){
+        if(ite.hasNext()){
+        Proveedor proveedor2= ite.next();
+            datos[0]=proveedor2.getId_rut().toString();
+            datos[1]=proveedor2.getNombre();
+            datos[2]=proveedor2.getTelefono().toString();
+            datos[3]=proveedor2.getEmail();
+            datos[4]=proveedor2.getPaginaweb();
+            datos[5]=proveedor2.getDireccion();
+            
+            modelo.addRow(datos);
+        
+        }
+        }
+        else
+          JOptionPane.showMessageDialog(rootPane, "No existen datos para el proveedor");
+                  
+        ProveedorTable.setModel(modelo);
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BuscarButtonActionPerformed
 
     /**
      * @param args the command line arguments

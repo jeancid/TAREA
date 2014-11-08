@@ -24,6 +24,7 @@ import org.slf4j.LoggerFactory;
 import modell.Usuario;
 import modell.Proveedor;
 import modell.Producto;
+import org.apache.commons.lang.StringUtils;
 
 /**
  *
@@ -208,7 +209,7 @@ public class serviciodb {
         return pregunta;
     }
    
-     
+    
      public ArrayList<Producto> getProduto(){
         ArrayList<Producto> productos = new ArrayList<Producto>();
         try {
@@ -249,6 +250,52 @@ public class serviciodb {
         return productos;
     }
      
+     public ArrayList<Proveedor> getBuscarProveedor(String nombre){
+     ArrayList<Proveedor> proveedorNombre=new ArrayList<Proveedor>();
+     try {
+         if (!StringUtils.isEmpty(nombre)) {
+                // Conectamos si no está conectado
+                if (!isConectado()) {
+                    conectar();
+                }
+         
+         PreparedStatement st = null;
+                String query = "SELECT*FROM proveedor WHERE nombre=?";
+                st = conexion.prepareStatement(query);
+              
+                if(st !=null){
+                    st.setString(1, nombre);
+                    ResultSet rs = st.executeQuery();
+                         
+                    if (rs != null) {
+                        while (rs.next()) {
+                            Proveedor proveedor = new Proveedor();
+                            proveedor.setId_rut(rs.getInt(1));
+                            proveedor.setNombre(rs.getString(2));
+                            proveedor.setTelefono(rs.getInt(3));
+                            proveedor.setEmail(rs.getString(4));
+                            proveedor.setPaginaweb(rs.getString(5));
+                            proveedor.setDireccion(rs.getString(6));
+                            proveedorNombre.add(proveedor);
+                        }
+                        
+                    }
+                    st.close();
+                }}
+         else {
+                logger.info("ERROR: nombre nulo");
+            }
+                    
+                         
+     }
+     
+     catch (Exception e) {
+            proveedorNombre = null;
+            logger.error(e.toString());
+            logger.debug("Error al obtener producto", e);
+        }
+      return proveedorNombre;   
+     }
      
      public ArrayList<Proveedor> getProveedor(){
         ArrayList<Proveedor> proveedores = new ArrayList<Proveedor>();
