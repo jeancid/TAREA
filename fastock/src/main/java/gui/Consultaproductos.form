@@ -143,11 +143,13 @@
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="Guardar" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="EliminarBoton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="NuevoBoton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="ActualizarBoton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="EliminarBoton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="NuevoBoton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ActualizarBoton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="AtrasBoton" min="-2" max="-2" attributes="0"/>
