@@ -182,10 +182,10 @@ public class Consultaproveedor extends javax.swing.JFrame {
     }//GEN-LAST:event_AceptarButtonActionPerformed
 
     private void BuscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarButtonActionPerformed
-        ArrayList<Proveedor> proveedorNombre = new ArrayList<Proveedor>();
+        modell.Proveedor proveedor1 = new modell.Proveedor();
         serviciodb serv = new serviciodb();
         String nombrepro= this.BuscarField.getText();
-        proveedorNombre = serv.getBuscarProveedor(nombrepro);
+        proveedor1 = serv.getBuscarProveedor(nombrepro);
       
         DefaultTableModel modelo=new DefaultTableModel();
         modelo.addColumn("Rut");
@@ -197,23 +197,19 @@ public class Consultaproveedor extends javax.swing.JFrame {
         ProveedorTable.setModel(modelo);   
         
         String []datos=new String[6];
-        Iterator<Proveedor> ite=proveedorNombre.iterator();
-        if(!proveedorNombre.isEmpty()){
-        if(ite.hasNext()){
-        Proveedor proveedor2= ite.next();
-            datos[0]=proveedor2.getId_rut().toString();
-            datos[1]=proveedor2.getNombre();
-            datos[2]=proveedor2.getTelefono().toString();
-            datos[3]=proveedor2.getEmail();
-            datos[4]=proveedor2.getPaginaweb();
-            datos[5]=proveedor2.getDireccion();
-            
+        // al ingresar proveedor, nombre nunca puede ser null!!!
+        //if(proveedor1.getNombre().equals(null)==false){ //condicionar si es null o no
+            datos[0]=proveedor1.getId_rut().toString();
+            datos[1]=proveedor1.getNombre();
+            datos[2]=proveedor1.getTelefono().toString();
+            datos[3]=proveedor1.getEmail();
+            datos[4]=proveedor1.getPaginaweb();
+            datos[5]=proveedor1.getDireccion();
             modelo.addRow(datos);
         
-        }
-        }
-        else
-          JOptionPane.showMessageDialog(rootPane, "No existen datos para el proveedor");
+        
+        
+        //else JOptionPane.showMessageDialog(rootPane, "No existen datos para el proveedor");
                   
         ProveedorTable.setModel(modelo);
         
