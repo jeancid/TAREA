@@ -37,6 +37,7 @@ public class Loginn extends javax.swing.JFrame {
         PassField = new javax.swing.JPasswordField();
         CancelarBoton = new javax.swing.JToggleButton();
         AceptarBoton = new javax.swing.JButton();
+        RegistrarButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,16 +64,24 @@ public class Loginn extends javax.swing.JFrame {
             }
         });
 
+        RegistrarButton.setText("REGISTRAR");
+        RegistrarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegistrarButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 207, Short.MAX_VALUE)
                         .addComponent(CancelarBoton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                        .addComponent(RegistrarButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(AceptarBoton))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -99,7 +108,8 @@ public class Loginn extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AceptarBoton)
-                    .addComponent(CancelarBoton))
+                    .addComponent(CancelarBoton)
+                    .addComponent(RegistrarButton))
                 .addContainerGap())
         );
 
@@ -154,6 +164,12 @@ if (this.NombreField.getText().equals("") || this.PassField.getText().equals("")
         }        // TODO add your handling code here:
     }//GEN-LAST:event_AceptarBotonMouseClicked
 
+    private void RegistrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarButtonActionPerformed
+         Registrar registrar= new Registrar();
+         registrar.setVisible(true);
+         registrar.setLocationRelativeTo(null);// TODO add your handling code here:
+    }//GEN-LAST:event_RegistrarButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -196,5 +212,6 @@ if (this.NombreField.getText().equals("") || this.PassField.getText().equals("")
     private javax.swing.JTextField NombreField;
     private javax.swing.JLabel NombreLabel;
     private javax.swing.JPasswordField PassField;
+    private javax.swing.JButton RegistrarButton;
     // End of variables declaration//GEN-END:variables
 }

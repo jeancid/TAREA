@@ -293,6 +293,9 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="PrecioField">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PrecioFieldActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="NombreField">
           <Events>
@@ -339,6 +342,9 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ComboProvActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

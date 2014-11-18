@@ -241,6 +241,12 @@ void MostrarDatos(ArrayList<Producto> productos){
             }
         });
 
+        PrecioField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PrecioFieldActionPerformed(evt);
+            }
+        });
+
         NombreField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NombreFieldActionPerformed(evt);
@@ -272,6 +278,12 @@ void MostrarDatos(ArrayList<Producto> productos){
         MostrarTodoBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MostrarTodoBotonActionPerformed(evt);
+            }
+        });
+
+        ComboProv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboProvActionPerformed(evt);
             }
         });
 
@@ -543,6 +555,14 @@ void MostrarDatos(ArrayList<Producto> productos){
             this.CategoriaBox.setSelectedItem(producto.getCategoria());
         }
     }//GEN-LAST:event_ProductoTableMouseClicked
+
+    private void PrecioFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrecioFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PrecioFieldActionPerformed
+
+    private void ComboProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboProvActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboProvActionPerformed
      
     /**
      * @param args the command line arguments

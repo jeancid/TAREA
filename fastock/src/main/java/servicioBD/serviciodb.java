@@ -360,8 +360,44 @@ public class serviciodb {
         }
         return proveedores;
     }
+    
+    /*public Producto getBuscarProductocod(String codigo){
+        Producto producto=new Producto();
+     try {
+                // Conectamos si no está conectado
+                if (!isConectado()) {
+                    conectar();
+                }
+         PreparedStatement st = null;
+                String query = "SELECT*FROM producto WHERE id_barra=?";
+                st = conexion.prepareStatement(query);
               
-    public ArrayList<Producto> getBuscarProducto(String nombre){
+                if(st !=null){
+                    st.setString(1,codigo);
+                    ResultSet rs = st.executeQuery();
+                    if (rs != null) {
+                        rs.next();
+                            producto.setId_barra(rs.getString(1));
+                            producto.setPrecio(rs.getInt(2));
+                            producto.setNombre(rs.getString(3));
+                            producto.setCategoria(rs.getString(4));
+                            
+                    }
+                    st.close();
+                }
+         else {
+                logger.info("ERROR: nombre nulo");
+            }
+     }
+     
+     catch (Exception e) {
+            producto = null;
+            logger.error(e.toString());
+            logger.debug("Error al obtener producto", e);
+        }
+        return producto;
+    }*/
+     public ArrayList<Producto> getBuscarProducto(String nombre){
      ArrayList<Producto> productos=new ArrayList<Producto>();
      try {
          if (!StringUtils.isEmpty(nombre)) {
@@ -388,6 +424,51 @@ public class serviciodb {
                             producto.setCategoria(rs.getString(5));
                             producto.setProveedor_id_rut(rs.getInt(6));
                             
+                            productos.add(producto);
+                        }
+                        
+                    }
+                    st.close();
+                }}
+         else {
+                logger.info("ERROR: nombre nulo");
+            }
+                    
+                         
+     }
+     
+     catch (Exception e) {
+            productos = null;
+            logger.error(e.toString());
+            logger.debug("Error al obtener producto", e);
+        }
+      return productos;   
+     }
+    public ArrayList<Producto> getBuscarProductocod(String codigo){
+     ArrayList<Producto> productos=new ArrayList<Producto>();
+     try {
+         if (!StringUtils.isEmpty(codigo)) {
+                // Conectamos si no está conectado
+                if (!isConectado()) {
+                    conectar();
+     }
+         
+         PreparedStatement st = null;
+                String query = "SELECT*FROM producto WHERE id_barra=?";
+                st = conexion.prepareStatement(query);
+              
+                if(st !=null){
+                    st.setString(1, codigo);
+                    ResultSet rs = st.executeQuery();
+                         
+                    if (rs != null) {
+                        while (rs.next()) {
+                            Producto producto = new Producto();
+                            producto.setId_barra(rs.getString(1));
+                            producto.setPrecio(rs.getInt(2));
+                            producto.setNombre(rs.getString(3));
+                            producto.setCategoria(rs.getString(4));
+                                                       
                             productos.add(producto);
                         }
                         

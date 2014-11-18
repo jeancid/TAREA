@@ -115,6 +115,11 @@ public class Sistema extends javax.swing.JFrame {
         jMenuBar1.add(jMenu3);
 
         VentaMenu.setText("Venta");
+        VentaMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                VentaMenuMouseClicked(evt);
+            }
+        });
         VentaMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VentaMenuActionPerformed(evt);
@@ -128,7 +133,7 @@ public class Sistema extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 444, Short.MAX_VALUE)
+            .addGap(0, 459, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,6 +197,13 @@ public class Sistema extends javax.swing.JFrame {
           this.dispose();
 // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void VentaMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VentaMenuMouseClicked
+          Venta venta=new Venta();
+          venta.setVisible(true);
+          venta.setLocationRelativeTo(null);
+          this.dispose();// TODO add your handling code here:
+    }//GEN-LAST:event_VentaMenuMouseClicked
 
     /**
      * @param args the command line arguments
