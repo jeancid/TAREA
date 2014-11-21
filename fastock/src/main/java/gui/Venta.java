@@ -20,8 +20,32 @@ public class Venta extends javax.swing.JFrame {
     /**
      * Creates new form Venta
      */
+      ArrayList<Producto>productosventa=new ArrayList<Producto>();
     public Venta() {
         initComponents();
+    }
+    void MostrarDatos(ArrayList<Producto> productos){
+        serviciodb serv = new serviciodb();
+      
+        DefaultTableModel modelo=new DefaultTableModel();
+            modelo.addColumn("Codigo");
+            modelo.addColumn("Precio");
+            modelo.addColumn("Nombre");
+            modelo.addColumn("Cantidad");
+          
+          
+        ventaTable.setModel(modelo);
+        String []datos=new String[5];
+        Iterator<Producto> ite=productos.iterator();
+        while(ite.hasNext()){
+        Producto producto1= ite.next();
+            datos[0]=producto1.getId_barra();
+            datos[1]=producto1.getPrecio().toString();
+            datos[2]=producto1.getNombre();
+            datos[3]=producto1.getCantidad().toString();
+            modelo.addRow(datos);
+                            }
+        ventaTable.setModel(modelo);
     }
 
     /**
@@ -217,7 +241,7 @@ public class Venta extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-      void MostrarDatos(ArrayList<Producto> productos,int cantidad){
+      void MostrarDatos(Producto productos,int cantidad){
         serviciodb serv = new serviciodb();
         
         DefaultTableModel modelo=new DefaultTableModel();
@@ -225,22 +249,16 @@ public class Venta extends javax.swing.JFrame {
             modelo.addColumn("Precio");
             modelo.addColumn("Nombre");
             modelo.addColumn("Cantidad");
-            modelo.addColumn("Categoria");
            
             ventaTable.setModel(modelo);
-       String []datos=new String[5];
-       Iterator<Producto> ite=productos.iterator();
-       while(ite.hasNext()){
-           
-        Producto producto1= ite.next();
-            datos[0]=producto1.getId_barra();
-            datos[1]=producto1.getPrecio().toString();
-            datos[2]=producto1.getNombre();
-            datos[3]=producto1.getCantidad().toString(cantidad);
-            datos[4]=producto1.getCategoria();
-            modelo.addRow(datos);
-                            }
-                 
+            String []datos=new String[5];
+                
+   
+            datos[0]=productos.getId_barra();
+            datos[1]=productos.getPrecio().toString();
+            datos[2]=productos.getNombre();
+            datos[3]=productos.getCantidad().toString(cantidad);
+                                          
            
             modelo.addRow(datos);     
             ventaTable.setModel(modelo);
@@ -257,7 +275,6 @@ public class Venta extends javax.swing.JFrame {
     private void cantidadFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cantidadFieldActionPerformed
-
     private void atrasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasButtonActionPerformed
         Sistema sistema = new Sistema();
         sistema.setVisible(true);
@@ -266,27 +283,51 @@ public class Venta extends javax.swing.JFrame {
     }//GEN-LAST:event_atrasButtonActionPerformed
 
     private void borrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarButtonActionPerformed
-        
+       int fila=ventaTable.getSelectedRow();
+       String codig;
+         
+       codig=ventaTable.getValueAt(fila,0).toString();
+       Iterator<Producto>ite= productosventa.iterator();
+       while(ite.hasNext()){
+           Producto productoaux=ite.next();
+           if(productoaux.getId_barra().equalsIgnoreCase(codig));
+           productosventa.remove(productoaux);
+       }
+        MostrarDatos(productosventa);
         this.codigoField.setText("");
         this.cantidadField.setText("");
     // TODO add your handling code here:
     }//GEN-LAST:event_borrarButtonActionPerformed
 
     private void agregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarButtonActionPerformed
-        ArrayList<Producto> productos = new ArrayList<Producto>();
-        ArrayList<Producto>productosTabla=new ArrayList<Producto>();
-        
+        Producto producto = new Producto();      
         serviciodb serv = new serviciodb();
         String codigo= this.codigoField.getText();
-        productos = serv.getBuscarProductocod(codigo);
-        Integer cantidad=0;
-        cantidad=(Integer.parseInt(this.cantidadField.getText()));
-        MostrarDatos(productos,cantidad);
+        Iterator<Producto>ite= productosventa.iterator();
+        Integer cantidad=Integer.parseInt(this.cantidadField.getText());
+        Producto producto1= serv.getProduto("select * from producto where id_barra=1");
+        productosventa.add(producto1);
+           while(ite.hasNext()){
+               Producto productoaux=new Producto();
+               productoaux=ite.next();
+           if(productoaux.getId_barra().equalsIgnoreCase(codigo))
+           {
+           int cantaux=productoaux.getCantidad()+cantidad;
+            productoaux.setCantidad(cantaux);
+            productosventa.add(productoaux);
+           }
+           else{
+                producto = serv.getBuscarProductocod(codigo);
+                producto.setCantidad(cantidad);
+                productosventa.add(producto);
+                   }
+           }
+        MostrarDatos(productosventa);
      
         this.codigoField.setText("");   
         this.cantidadField.setText("");// TODO add your handling code here:
     }//GEN-LAST:event_agregarButtonActionPerformed
-
+    
     private void buscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarButtonActionPerformed
          Buscar buscar= new Buscar();
          buscar.setVisible(true);

@@ -361,7 +361,7 @@ public class serviciodb {
         return proveedores;
     }
     
-    /*public Producto getBuscarProductocod(String codigo){
+    public Producto getBuscarProductocod(String codigo){
         Producto producto=new Producto();
      try {
                 // Conectamos si no está conectado
@@ -380,7 +380,7 @@ public class serviciodb {
                             producto.setId_barra(rs.getString(1));
                             producto.setPrecio(rs.getInt(2));
                             producto.setNombre(rs.getString(3));
-                            producto.setCategoria(rs.getString(4));
+                            
                             
                     }
                     st.close();
@@ -396,7 +396,7 @@ public class serviciodb {
             logger.debug("Error al obtener producto", e);
         }
         return producto;
-    }*/
+    }
      public ArrayList<Producto> getBuscarProducto(String nombre){
      ArrayList<Producto> productos=new ArrayList<Producto>();
      try {
@@ -444,7 +444,7 @@ public class serviciodb {
         }
       return productos;   
      }
-    public ArrayList<Producto> getBuscarProductocod(String codigo){
+    /*public ArrayList<Producto> getBuscarProductocod(String codigo){
      ArrayList<Producto> productos=new ArrayList<Producto>();
      try {
          if (!StringUtils.isEmpty(codigo)) {
@@ -488,7 +488,7 @@ public class serviciodb {
             logger.debug("Error al obtener producto", e);
         }
       return productos;   
-     }
+     }*/
     
     public Producto getProduto(String sql){
         Producto producto = new Producto();
