@@ -7,6 +7,7 @@ package gui;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modell.Producto;
 import servicioBD.serviciodb;
@@ -24,9 +25,8 @@ public class Venta extends javax.swing.JFrame {
     public Venta() {
         initComponents();
     }
-    void MostrarDatos(ArrayList<Producto> productos){
-        serviciodb serv = new serviciodb();
-      
+    void MostrarDatos(ArrayList<Producto>productos){
+              
         DefaultTableModel modelo=new DefaultTableModel();
             modelo.addColumn("Codigo");
             modelo.addColumn("Precio");
@@ -34,7 +34,7 @@ public class Venta extends javax.swing.JFrame {
             modelo.addColumn("Cantidad");
           
           
-        ventaTable.setModel(modelo);
+        
         String []datos=new String[5];
         Iterator<Producto> ite=productos.iterator();
         while(ite.hasNext()){
@@ -242,7 +242,6 @@ public class Venta extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
       void MostrarDatos(Producto productos,int cantidad){
-        serviciodb serv = new serviciodb();
         
         DefaultTableModel modelo=new DefaultTableModel();
             modelo.addColumn("Codigo");
@@ -305,23 +304,39 @@ public class Venta extends javax.swing.JFrame {
         String codigo= this.codigoField.getText();
         Iterator<Producto>ite= productosventa.iterator();
         Integer cantidad=Integer.parseInt(this.cantidadField.getText());
-        Producto producto1= serv.getProduto("select * from producto where id_barra=1");
-        productosventa.add(producto1);
-           while(ite.hasNext()){
-               Producto productoaux=new Producto();
-               productoaux=ite.next();
-           if(productoaux.getId_barra().equalsIgnoreCase(codigo))
-           {
-           int cantaux=productoaux.getCantidad()+cantidad;
-            productoaux.setCantidad(cantaux);
-            productosventa.add(productoaux);
-           }
-           else{
-                producto = serv.getBuscarProductocod(codigo);
-                producto.setCantidad(cantidad);
-                productosventa.add(producto);
-                   }
-           }
+        if(productosventa.isEmpty()) 
+        {
+        producto=serv.getBuscarProductocod(codigo);
+        producto.setCantidad(cantidad);
+        productosventa.add(producto);
+        JOptionPane.showMessageDialog(null,"Estaba vacio");
+
+        }
+        else
+        {
+            while(ite.hasNext()){
+            Producto productoaux=ite.next();
+            String CodigoAux=productoaux.getId_barra();
+            //FERNANDO AQUI LLEGA EL CODIGO LUEGO SE CAE
+                    if(CodigoAux.equalsIgnoreCase(codigo))
+                    {
+                       
+                         int cantaux=productoaux.getCantidad()+cantidad;
+                         productoaux.setCantidad(cantaux);
+                         productosventa.add(productoaux);
+                         
+                    }
+                    else{
+                         producto=serv.getBuscarProductocod(codigo);
+                         producto.setCantidad(cantidad);
+                         productosventa.add(producto);
+                         }
+                  
+            }
+           
+        
+        }
+      
         MostrarDatos(productosventa);
      
         this.codigoField.setText("");   
