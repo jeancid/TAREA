@@ -385,12 +385,9 @@ public class Venta extends javax.swing.JFrame {
     Producto producaux=ite.next();
     String sql=producaux.getId_barra();
     boolean pregunta = serv.modificarCantstock(sql,producaux);
-   
-     }
-       /* if(pregunta ==true){
-            JOptionPane.showMessageDialog(null,"El producto fue modificado con éxito", null, WIDTH);
-        }else
-        JOptionPane.showMessageDialog(null,"Ocurrió algún error", null, WIDTH);*/
+    }
+    String To = this.TotalField.getText();
+      Pago.TotalField2.setText(To);
     }//GEN-LAST:event_cobrarButtonActionPerformed
 
     /**
