@@ -302,7 +302,7 @@ void MostrarDatos(ArrayList<Producto> productos){
                         .addComponent(BuscarButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(MostrarTodoBoton))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -323,6 +323,7 @@ void MostrarDatos(ArrayList<Producto> productos){
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(AtrasBoton, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(ModificarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -330,8 +331,7 @@ void MostrarDatos(ArrayList<Producto> productos){
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(NuevoBoton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(GuardarBoton))
-                            .addComponent(AtrasBoton, javax.swing.GroupLayout.Alignment.TRAILING))))
+                                .addComponent(GuardarBoton)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -344,8 +344,8 @@ void MostrarDatos(ArrayList<Producto> productos){
                     .addComponent(jLabel1)
                     .addComponent(MostrarTodoBoton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                .addGap(10, 10, 10)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ProveedorLabel)
                     .addComponent(ComboProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -369,15 +369,14 @@ void MostrarDatos(ArrayList<Producto> productos){
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CantidadField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CantidadLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(GuardarBoton)
                     .addComponent(EliminarBoton)
                     .addComponent(ModificarBoton)
                     .addComponent(NuevoBoton))
-                .addGap(26, 26, 26)
-                .addComponent(AtrasBoton)
-                .addGap(24, 24, 24))
+                .addGap(18, 18, 18)
+                .addComponent(AtrasBoton))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -489,12 +488,16 @@ void MostrarDatos(ArrayList<Producto> productos){
     }//GEN-LAST:event_AtrasBotonActionPerformed
 
     private void BuscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarButtonActionPerformed
+        Limpiar();
+        DeshabilitarBotones();
+        DeshabilitarCampos();
         ArrayList<Producto> productos = new ArrayList<Producto>();
         serviciodb serv = new serviciodb();
         String nombrepro= this.BuscarField.getText();
         productos = serv.getBuscarProducto(nombrepro);
         MostrarDatos(productos);
         this.BuscarField.setText("");
+        
     }//GEN-LAST:event_BuscarButtonActionPerformed
 
     private void BuscarFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarFieldActionPerformed

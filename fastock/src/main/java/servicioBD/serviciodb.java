@@ -151,7 +151,7 @@ public class serviciodb {
                 }
 
                 PreparedStatement st = null;
-                String query = "Insert into proveedor(id_rut,nombre,telefono,email,paginaweb,direccion)values(?,?,?,?,?,?) ";
+                String query = "Insert into proveedor(id_rut,nombre,telefono,email,paginaweb,direccion) values (?,?,?,?,?,?)";
                 st = conexion.prepareStatement(query);
                 st.setInt(1,proveedor.getId_rut());
                 st.setString(2, proveedor.getNombre());
@@ -166,7 +166,7 @@ public class serviciodb {
         } catch (Exception e) {
             proveedor = null;
             logger.error(e.toString());
-            logger.debug("Error al obtener usuario", e);
+            logger.debug("Error al guardar proveedor ", e);
             pregunta = false;
                 
         }
@@ -311,7 +311,7 @@ public class serviciodb {
                     st.close();
                 }
          else {
-                logger.info("ERROR: nombre nulo");
+                logger.info("ERROR al buscar proveedor");
             }
      }
      
@@ -361,6 +361,25 @@ public class serviciodb {
         }
         return proveedores;
     }
+     public boolean eliminarProveedor(String sql){
+     boolean pregunta=false;
+     
+        try {
+                // Conectamos si no está conectado
+                if (!isConectado()) {
+                    conectar();
+                }
+                PreparedStatement st = conexion.prepareStatement(sql);
+                st.executeUpdate();
+                pregunta=true;
+                
+        } catch (Exception e) {
+            logger.error(e.toString());
+            logger.debug("Error al eliminar proveedor", e);
+        }
+        return pregunta;
+        
+                                            }
     
     public Producto getBuscarProductocod(String codigo){
         Producto producto=new Producto();
@@ -572,6 +591,34 @@ public class serviciodb {
         } catch (Exception e) {
             logger.error(e.toString());
             logger.debug("Error al modificar producto", e);
+            pregunta = false;
+        }
+        return pregunta;
+    }
+    
+    public boolean modificarProveedor(String sql,Proveedor proveedor) {
+      boolean pregunta =false;
+
+        try {
+            // Conectamos si no está conectado
+                if (!isConectado()) {
+                    conectar();     }
+                PreparedStatement st = null;
+                String query = "update proveedor set telefono=?,nombre=?,email=?,paginaweb=?,direccion=? where id_rut=?";
+                st = conexion.prepareStatement(query);
+                
+                st.setInt(1, proveedor.getTelefono());
+                st.setString(2,proveedor.getNombre());
+                st.setString(3,proveedor.getEmail());
+                st.setString(4, proveedor.getPaginaweb());
+                st.setString(5, proveedor.getDireccion());
+                st.setString(6, sql);
+                st.executeUpdate();
+                pregunta=true;
+       
+        } catch (Exception e) {
+            logger.error(e.toString());
+            logger.debug("Error al modificar proveedor", e);
             pregunta = false;
         }
         return pregunta;
