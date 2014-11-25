@@ -304,51 +304,33 @@ public class Venta extends javax.swing.JFrame {
         String codigo= this.codigoField.getText();
         Iterator<Producto>ite= productosventa.iterator();
         Integer cantidad=Integer.parseInt(this.cantidadField.getText());
-        if(productosventa.isEmpty()) 
-        {
+        if(productosventa.isEmpty()){
         producto=serv.getBuscarProductocod(codigo);
         producto.setCantidad(cantidad);
         productosventa.add(producto);
-        JOptionPane.showMessageDialog(null,"Estaba vacio");
-        }
-        else
-        {
-            int cont=0;
-            Producto ProductoCambiado=new Producto();
-            
-            while(ite.hasNext()){
+        JOptionPane.showMessageDialog(null,"Estaba vacio");}
+        else{
+            int cont=0;        
+            while(ite.hasNext())
+            { 
             Producto productoaux=ite.next();
-            
             String CodigoAux=productoaux.getId_barra();
-            //FERNANDO AQUI LLEGA EL CODIGO LUEGO SE CAE
-                    if(CodigoAux.equals(codigo))
-                    {
+            if(CodigoAux.equals(codigo))
+            {
                          Integer cant=0,aux1=0;
                          cont=1;
                          cant=productoaux.getCantidad();
                          aux1=cantidad+cant;
                          productoaux.setCantidad(aux1);
-                         ProductoCambiado=productoaux;
-                        
-              //           productosventa.add(productoaux);
-                        }
-                /*    else{
-                         producto=serv.getBuscarProductocod(codigo);
-                         producto.setCantidad(cantidad);
-                         productosventa.add(producto);
-                         }*/
-                  }
+             }
+             }
             if(cont==1)
-            {
-                productosventa.add(ProductoCambiado);
-                cont=0;
-            }
+              cont=0;        
             else
             {
                 producto=serv.getBuscarProductocod(codigo);
-                         producto.setCantidad(cantidad);
-                         productosventa.add(producto);
-            
+                producto.setCantidad(cantidad);
+                productosventa.add(producto);
             }
         }
         MostrarDatos(productosventa);
