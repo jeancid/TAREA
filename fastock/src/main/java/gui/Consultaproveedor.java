@@ -194,6 +194,12 @@ public class Consultaproveedor extends javax.swing.JFrame {
 
         RutProveedor.setText("Rut Proveedor");
 
+        RutField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                RutFieldKeyTyped(evt);
+            }
+        });
+
         NombreField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 NombreFieldKeyTyped(evt);
@@ -556,12 +562,19 @@ public class Consultaproveedor extends javax.swing.JFrame {
     }//GEN-LAST:event_BuscarFieldKeyTyped
 
     private void NombreFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreFieldKeyTyped
-    Sletras(NombreField);        // TODO add your handling code here:
+    char car = evt.getKeyChar();
+            if(!(car<'0' || car>'9')) evt.consume();        // TODO add your handling code here:
     }//GEN-LAST:event_NombreFieldKeyTyped
 
     private void TelefonoFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TelefonoFieldKeyTyped
-    Nletras(TelefonoField);        // TODO add your handling code here:
+    char car = evt.getKeyChar();
+            if((car<'0' || car>'9')) evt.consume();      // TODO add your handling code here:
     }//GEN-LAST:event_TelefonoFieldKeyTyped
+
+    private void RutFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RutFieldKeyTyped
+            char car = evt.getKeyChar();
+            if((car<'0' || car>'9')) evt.consume();        // TODO add your handling code here:
+    }//GEN-LAST:event_RutFieldKeyTyped
 
     /**
      * @param args the command line arguments

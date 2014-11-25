@@ -616,23 +616,28 @@ void MostrarDatos(ArrayList<Producto> productos){
     }//GEN-LAST:event_ComboProvActionPerformed
 
     private void BuscarFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuscarFieldKeyTyped
-    Sletras(BuscarField);        // TODO add your handling code here:
+             char car = evt.getKeyChar();
+            if(!(car<'0' || car>'9')) evt.consume();        // TODO add your handling code here:
     }//GEN-LAST:event_BuscarFieldKeyTyped
 
     private void CodigoFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CodigoFieldKeyTyped
-   Nletras(CodigoField);        // TODO add your handling code here:
+            char car = evt.getKeyChar();
+            if((car<'0' || car>'9')) evt.consume();        // TODO add your handling code here:
     }//GEN-LAST:event_CodigoFieldKeyTyped
 
     private void NombreFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreFieldKeyTyped
-    Sletras(NombreField);        // TODO add your handling code here:
+            char car = evt.getKeyChar();
+            if(!(car<'0' || car>'9')) evt.consume();         // TODO add your handling code here:
     }//GEN-LAST:event_NombreFieldKeyTyped
 
     private void PrecioFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrecioFieldKeyTyped
-    Nletras(PrecioField);        // TODO add your handling code here:
+            char car = evt.getKeyChar();
+            if((car<'0' || car>'9')) evt.consume();         // TODO add your handling code here:
     }//GEN-LAST:event_PrecioFieldKeyTyped
 
     private void CantidadFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CantidadFieldKeyTyped
-    Nletras(CantidadField);        // TODO add your handling code here:
+    char car = evt.getKeyChar();
+            if((car<'0' || car>'9')) evt.consume();        // TODO add your handling code here:
     }//GEN-LAST:event_CantidadFieldKeyTyped
      
     /**

@@ -37,6 +37,7 @@ public class Venta extends javax.swing.JFrame {
                 char c = e.getKeyChar();
                 if (!Character.isDigit(c)) {
                     e.consume();
+                    JOptionPane.showMessageDialog(rootPane,"Ingresa solo numeros");
                 }
             }
         });
@@ -424,13 +425,14 @@ if(codigoField.getText().trim().length()==0 || cantidadField.getText().trim().le
     }//GEN-LAST:event_cobrarButtonActionPerformed
 
     private void codigoFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codigoFieldKeyTyped
-   
-    Nletras(codigoField);
+      char car = evt.getKeyChar();
+            if((car<'0' || car>'9')) evt.consume(); 
     // TODO add your handling code here:
     }//GEN-LAST:event_codigoFieldKeyTyped
 
     private void cantidadFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cantidadFieldKeyTyped
-    Nletras(cantidadField);
+    char car = evt.getKeyChar();
+            if((car<'0' || car>'9')) evt.consume(); 
     }//GEN-LAST:event_cantidadFieldKeyTyped
     
     /**
