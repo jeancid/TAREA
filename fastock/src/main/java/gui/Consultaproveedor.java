@@ -5,9 +5,12 @@
  */
 package gui;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import modell.Proveedor;
 import servicioBD.serviciodb;
@@ -21,6 +24,24 @@ public class Consultaproveedor extends javax.swing.JFrame {
     /**
      * Creates new form Consultaproveedor
      */
+     public void Sletras(JTextField a){
+        a.addKeyListener(new KeyAdapter(){
+            public void keyTyped(KeyEvent e){
+                char c= e.getKeyChar();
+                if(Character.isDigit(c))
+                    e.consume();
+            }
+        });
+    }
+       public void Nletras(JTextField a){
+        a.addKeyListener(new KeyAdapter(){
+            public void keyTyped(KeyEvent e){
+                char c= e.getKeyChar();
+                if(!Character.isDigit(c))
+                    e.consume();
+            }
+        });
+    }
     public Consultaproveedor() {
         initComponents();
         MostrarDatos();
@@ -136,6 +157,12 @@ public class Consultaproveedor extends javax.swing.JFrame {
 
         buscarLabel.setText("Buscar por nombre:");
 
+        BuscarField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                BuscarFieldKeyTyped(evt);
+            }
+        });
+
         BuscarButton.setText("Buscar");
         BuscarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,6 +194,12 @@ public class Consultaproveedor extends javax.swing.JFrame {
 
         RutProveedor.setText("Rut Proveedor");
 
+        NombreField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NombreFieldKeyTyped(evt);
+            }
+        });
+
         NombreLabel.setText("Nombre");
 
         TelefonoLabel.setText("Teléfono");
@@ -174,6 +207,11 @@ public class Consultaproveedor extends javax.swing.JFrame {
         TelefonoField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TelefonoFieldActionPerformed(evt);
+            }
+        });
+        TelefonoField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TelefonoFieldKeyTyped(evt);
             }
         });
 
@@ -257,24 +295,25 @@ public class Consultaproveedor extends javax.swing.JFrame {
                             .addComponent(DireccionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(DireccionField)
-                            .addComponent(PaginaField)
-                            .addComponent(EmailField)
-                            .addComponent(TelefonoField)
-                            .addComponent(NombreField)
-                            .addComponent(RutField, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(ModificarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(EliminarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(NuevoBoton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(GuardarBoton))
-                            .addComponent(AtrasButton, javax.swing.GroupLayout.Alignment.TRAILING))))
+                                .addComponent(GuardarBoton)
+                                .addGap(1, 1, 1))
+                            .addComponent(DireccionField)
+                            .addComponent(PaginaField)
+                            .addComponent(EmailField)
+                            .addComponent(TelefonoField)
+                            .addComponent(NombreField)
+                            .addComponent(RutField, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(AtrasButton)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -287,8 +326,8 @@ public class Consultaproveedor extends javax.swing.JFrame {
                     .addComponent(BuscarButton)
                     .addComponent(MostrarTodoBoton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(RutField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -313,15 +352,15 @@ public class Consultaproveedor extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DireccionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DireccionLabel))
-                .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(GuardarBoton)
-                    .addComponent(EliminarBoton)
-                    .addComponent(ModificarBoton)
-                    .addComponent(NuevoBoton))
                 .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ModificarBoton)
+                    .addComponent(EliminarBoton)
+                    .addComponent(NuevoBoton)
+                    .addComponent(GuardarBoton))
+                .addGap(23, 23, 23)
                 .addComponent(AtrasButton)
-                .addGap(14, 14, 14))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -511,6 +550,18 @@ public class Consultaproveedor extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_ProveedorTableMouseClicked
+
+    private void BuscarFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuscarFieldKeyTyped
+    Sletras(BuscarField);        // TODO add your handling code here:
+    }//GEN-LAST:event_BuscarFieldKeyTyped
+
+    private void NombreFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreFieldKeyTyped
+    Sletras(NombreField);        // TODO add your handling code here:
+    }//GEN-LAST:event_NombreFieldKeyTyped
+
+    private void TelefonoFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TelefonoFieldKeyTyped
+    Nletras(TelefonoField);        // TODO add your handling code here:
+    }//GEN-LAST:event_TelefonoFieldKeyTyped
 
     /**
      * @param args the command line arguments

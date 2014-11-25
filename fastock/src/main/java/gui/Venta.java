@@ -5,9 +5,12 @@
  */
 package gui;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import modell.Producto;
 import servicioBD.serviciodb;
@@ -27,7 +30,18 @@ public class Venta extends javax.swing.JFrame {
         initComponents();
         
     }
-    void Total(ArrayList<Producto>productos){
+     
+    public void Nletras(JTextField a) {
+        a.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isDigit(c)) {
+                    e.consume();
+                }
+            }
+        });
+    }
+       void Total(ArrayList<Producto>productos){
         Iterator<Producto> ite=productos.iterator();
         Integer total=0;
         while(ite.hasNext()){
@@ -146,9 +160,20 @@ public class Venta extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(ventaTable);
 
+        codigoField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                codigoFieldKeyTyped(evt);
+            }
+        });
+
         cantidadField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cantidadFieldActionPerformed(evt);
+            }
+        });
+        cantidadField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cantidadFieldKeyTyped(evt);
             }
         });
 
@@ -326,7 +351,14 @@ public class Venta extends javax.swing.JFrame {
     }//GEN-LAST:event_borrarButtonActionPerformed
 
     private void agregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarButtonActionPerformed
-        Producto producto = new Producto();      
+if(codigoField.getText().trim().length()==0 || cantidadField.getText().trim().length()==0)
+ {
+       JOptionPane.showMessageDialog(this, "Complete todos los campos");
+ }
+ else
+ {
+       
+         Producto producto = new Producto();      
         serviciodb serv = new serviciodb();
         String codigo= this.codigoField.getText();
         Iterator<Producto>ite= productosventa.iterator();
@@ -365,7 +397,7 @@ public class Venta extends javax.swing.JFrame {
         this.cantidadField.setText("");
         Total(productosventa);// TODO add your handling code here:
     }//GEN-LAST:event_agregarButtonActionPerformed
-    
+    }  
     private void buscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarButtonActionPerformed
          Buscar buscar= new Buscar();
          buscar.setVisible(true);
@@ -388,8 +420,19 @@ public class Venta extends javax.swing.JFrame {
     }
     String To = this.TotalField.getText();
       Pago.TotalField2.setText(To);
+      dispose();
     }//GEN-LAST:event_cobrarButtonActionPerformed
 
+    private void codigoFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codigoFieldKeyTyped
+   
+    Nletras(codigoField);
+    // TODO add your handling code here:
+    }//GEN-LAST:event_codigoFieldKeyTyped
+
+    private void cantidadFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cantidadFieldKeyTyped
+    Nletras(cantidadField);
+    }//GEN-LAST:event_cantidadFieldKeyTyped
+    
     /**
      * @param args the command line arguments
      */

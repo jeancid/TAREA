@@ -32,7 +32,7 @@ public class venta {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-
+    
     public void setUsuario_idusuario(Integer usuario_idusuario) {
         this.usuario_idusuario = usuario_idusuario;
     }

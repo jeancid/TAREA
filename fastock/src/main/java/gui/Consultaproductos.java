@@ -5,9 +5,12 @@
  */
 package gui;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import modell.Producto;
 import modell.Proveedor;
@@ -22,6 +25,24 @@ public class Consultaproductos extends javax.swing.JFrame {
     /**
      * Creates new form Consultaproductos
      */
+    public void Sletras(JTextField a){
+        a.addKeyListener(new KeyAdapter(){
+            public void keyTyped(KeyEvent e){
+                char c= e.getKeyChar();
+                if(Character.isDigit(c))
+                    e.consume();
+            }
+        });
+    }
+       public void Nletras(JTextField a){
+        a.addKeyListener(new KeyAdapter(){
+            public void keyTyped(KeyEvent e){
+                char c= e.getKeyChar();
+                if(!Character.isDigit(c))
+                    e.consume();
+            }
+        });
+    }
     
       public Consultaproductos() {
         initComponents();
@@ -200,6 +221,11 @@ void MostrarDatos(ArrayList<Producto> productos){
                 BuscarFieldActionPerformed(evt);
             }
         });
+        BuscarField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                BuscarFieldKeyTyped(evt);
+            }
+        });
 
         BuscarButton.setText("Buscar");
         BuscarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -232,6 +258,11 @@ void MostrarDatos(ArrayList<Producto> productos){
                 CantidadFieldActionPerformed(evt);
             }
         });
+        CantidadField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CantidadFieldKeyTyped(evt);
+            }
+        });
 
         CategoriaBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Liquidos", "Abarrotes", "Confites" }));
         CategoriaBox.setToolTipText("");
@@ -246,10 +277,26 @@ void MostrarDatos(ArrayList<Producto> productos){
                 PrecioFieldActionPerformed(evt);
             }
         });
+        PrecioField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                PrecioFieldKeyTyped(evt);
+            }
+        });
 
         NombreField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NombreFieldActionPerformed(evt);
+            }
+        });
+        NombreField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NombreFieldKeyTyped(evt);
+            }
+        });
+
+        CodigoField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CodigoFieldKeyTyped(evt);
             }
         });
 
@@ -321,17 +368,15 @@ void MostrarDatos(ArrayList<Producto> productos){
                             .addComponent(CantidadField)
                             .addComponent(ComboProv, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(AtrasBoton, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(ModificarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(EliminarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(NuevoBoton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(GuardarBoton)))))
+                        .addComponent(AtrasBoton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ModificarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(EliminarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(NuevoBoton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(GuardarBoton)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -369,14 +414,18 @@ void MostrarDatos(ArrayList<Producto> productos){
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CantidadField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CantidadLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(GuardarBoton)
-                    .addComponent(EliminarBoton)
-                    .addComponent(ModificarBoton)
-                    .addComponent(NuevoBoton))
-                .addGap(18, 18, 18)
-                .addComponent(AtrasBoton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(GuardarBoton)
+                            .addComponent(EliminarBoton)
+                            .addComponent(ModificarBoton)
+                            .addComponent(NuevoBoton))
+                        .addGap(47, 47, 47))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(AtrasBoton)
+                        .addGap(27, 27, 27))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -392,8 +441,7 @@ void MostrarDatos(ArrayList<Producto> productos){
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -566,6 +614,26 @@ void MostrarDatos(ArrayList<Producto> productos){
     private void ComboProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboProvActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ComboProvActionPerformed
+
+    private void BuscarFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuscarFieldKeyTyped
+    Sletras(BuscarField);        // TODO add your handling code here:
+    }//GEN-LAST:event_BuscarFieldKeyTyped
+
+    private void CodigoFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CodigoFieldKeyTyped
+   Nletras(CodigoField);        // TODO add your handling code here:
+    }//GEN-LAST:event_CodigoFieldKeyTyped
+
+    private void NombreFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreFieldKeyTyped
+    Sletras(NombreField);        // TODO add your handling code here:
+    }//GEN-LAST:event_NombreFieldKeyTyped
+
+    private void PrecioFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrecioFieldKeyTyped
+    Nletras(PrecioField);        // TODO add your handling code here:
+    }//GEN-LAST:event_PrecioFieldKeyTyped
+
+    private void CantidadFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CantidadFieldKeyTyped
+    Nletras(CantidadField);        // TODO add your handling code here:
+    }//GEN-LAST:event_CantidadFieldKeyTyped
      
     /**
      * @param args the command line arguments

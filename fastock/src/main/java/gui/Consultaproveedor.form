@@ -79,6 +79,17 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="ModificarBoton" min="-2" pref="97" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="EliminarBoton" min="-2" pref="91" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="NuevoBoton" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="GuardarBoton" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                              </Group>
                               <Component id="DireccionField" max="32767" attributes="0"/>
                               <Component id="PaginaField" alignment="0" max="32767" attributes="0"/>
                               <Component id="EmailField" alignment="0" max="32767" attributes="0"/>
@@ -87,20 +98,9 @@
                               <Component id="RutField" alignment="1" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="AtrasButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="ModificarBoton" min="-2" pref="97" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="EliminarBoton" min="-2" pref="91" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="NuevoBoton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="GuardarBoton" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="AtrasButton" alignment="1" min="-2" max="-2" attributes="0"/>
-                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -118,8 +118,8 @@
                       <Component id="MostrarTodoBoton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="409" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="337" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="RutField" min="-2" max="-2" attributes="0"/>
@@ -151,16 +151,16 @@
                       <Component id="DireccionField" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="DireccionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="GuardarBoton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="EliminarBoton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="ModificarBoton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="NuevoBoton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="ModificarBoton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="EliminarBoton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="NuevoBoton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="GuardarBoton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   <Component id="AtrasButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -172,6 +172,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="BuscarField">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BuscarFieldKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="BuscarButton">
           <Properties>
@@ -222,6 +225,9 @@
         <Component class="javax.swing.JTextField" name="RutField">
         </Component>
         <Component class="javax.swing.JTextField" name="NombreField">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NombreFieldKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="NombreLabel">
           <Properties>
@@ -236,6 +242,7 @@
         <Component class="javax.swing.JTextField" name="TelefonoField">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TelefonoFieldActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TelefonoFieldKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="EmailField">
