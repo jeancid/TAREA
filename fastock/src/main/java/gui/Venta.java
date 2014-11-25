@@ -310,35 +310,48 @@ public class Venta extends javax.swing.JFrame {
         producto.setCantidad(cantidad);
         productosventa.add(producto);
         JOptionPane.showMessageDialog(null,"Estaba vacio");
-
         }
         else
         {
+            int cont=0;
+            Producto ProductoCambiado=new Producto();
+            
             while(ite.hasNext()){
             Producto productoaux=ite.next();
+            
             String CodigoAux=productoaux.getId_barra();
             //FERNANDO AQUI LLEGA EL CODIGO LUEGO SE CAE
-                    if(CodigoAux.equalsIgnoreCase(codigo))
+                    if(CodigoAux.equals(codigo))
                     {
-                       
-                         int cantaux=productoaux.getCantidad()+cantidad;
-                         productoaux.setCantidad(cantaux);
-                         productosventa.add(productoaux);
-                         
-                    }
-                    else{
+                         Integer cant=0,aux1=0;
+                         cont=1;
+                         cant=productoaux.getCantidad();
+                         aux1=cantidad+cant;
+                         productoaux.setCantidad(aux1);
+                         ProductoCambiado=productoaux;
+                        
+              //           productosventa.add(productoaux);
+                        }
+                /*    else{
                          producto=serv.getBuscarProductocod(codigo);
                          producto.setCantidad(cantidad);
                          productosventa.add(producto);
-                         }
-                  
+                         }*/
+                  }
+            if(cont==1)
+            {
+                productosventa.add(ProductoCambiado);
+                cont=0;
             }
-           
-        
+            else
+            {
+                producto=serv.getBuscarProductocod(codigo);
+                         producto.setCantidad(cantidad);
+                         productosventa.add(producto);
+            
+            }
         }
-      
         MostrarDatos(productosventa);
-     
         this.codigoField.setText("");   
         this.cantidadField.setText("");// TODO add your handling code here:
     }//GEN-LAST:event_agregarButtonActionPerformed
