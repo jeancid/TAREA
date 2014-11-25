@@ -5,6 +5,9 @@
  */
 package gui;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author jean
@@ -16,8 +19,14 @@ public class Sistema extends javax.swing.JFrame {
      */
     public Sistema() {
         initComponents();
+        this.FechaLabel.setText(fechaActual());
     }
-
+       public static String fechaActual(){
+     
+        Date fecha=new Date();
+        SimpleDateFormat formatoFecha=new SimpleDateFormat("dd/MM/YYYY");
+        return formatoFecha.format(fecha);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,6 +36,7 @@ public class Sistema extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        FechaLabel = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         CerrarMenu = new javax.swing.JMenuItem();
@@ -133,11 +143,17 @@ public class Sistema extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 459, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(325, Short.MAX_VALUE)
+                .addComponent(FechaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 332, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(290, Short.MAX_VALUE)
+                .addComponent(FechaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -247,6 +263,7 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JMenuItem ConsultaProveMenu;
     private javax.swing.JMenuItem ConsultaVentaMenu;
     private javax.swing.JMenuItem ConsultaprodMenu;
+    private javax.swing.JLabel FechaLabel;
     private javax.swing.JMenuItem SalirMenu;
     private javax.swing.JMenu VentaMenu;
     private javax.swing.JMenu jMenu1;
