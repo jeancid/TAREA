@@ -11,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Properties;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -576,6 +577,29 @@ public class serviciodb {
         return pregunta;
     }
          
+      public boolean modificarCantstock(String sql,Producto producto){
+       boolean pregunta =false;
+        try {
+            // Conectamos si no está conectado
+                if (!isConectado()) {
+                    conectar();     }
+                PreparedStatement st = null;
+                String query = "update producto set cantidad=(cantidad-?) where id_barra=?";
+                st = conexion.prepareStatement(query);
+                     st.setInt(1,producto.getCantidad());
+                     st.setString(2,sql);
+                     st.executeUpdate();
+                     pregunta=true;  
+             }
+              
+            catch (Exception e) {
+            logger.error(e.toString());
+            logger.debug("Error al modificar producto",e);
+            pregunta=false;
+         }
+       
+      return pregunta;
+      }
 }
 
 

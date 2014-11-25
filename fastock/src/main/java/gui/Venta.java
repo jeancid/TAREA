@@ -22,9 +22,10 @@ public class Venta extends javax.swing.JFrame {
      * Creates new form Venta
      */
       ArrayList<Producto>productosventa=new ArrayList<Producto>();
+     
     public Venta() {
         initComponents();
-        Total(productosventa);
+        
     }
     void Total(ArrayList<Producto>productos){
         Iterator<Producto> ite=productos.iterator();
@@ -96,6 +97,11 @@ public class Venta extends javax.swing.JFrame {
         });
 
         cobrarButton.setText("COBRAR");
+        cobrarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cobrarButtonActionPerformed(evt);
+            }
+        });
 
         atrasButton.setText("ATRAS");
         atrasButton.addActionListener(new java.awt.event.ActionListener() {
@@ -273,6 +279,7 @@ public class Venta extends javax.swing.JFrame {
            
             modelo.addRow(datos);     
             ventaTable.setModel(modelo);
+            
             }
          
 
@@ -303,6 +310,7 @@ public class Venta extends javax.swing.JFrame {
            Producto productoaux=ite.next();
            if(productoaux.getId_barra().equals(codig)){
            productosventa.remove(productoaux);
+           Total(productosventa);
            break;
        }
        }
@@ -313,6 +321,7 @@ public class Venta extends javax.swing.JFrame {
         MostrarDatos(productosventa);
         this.codigoField.setText("");
         this.cantidadField.setText("");
+        Total(productosventa);
     // TODO add your handling code here:
     }//GEN-LAST:event_borrarButtonActionPerformed
 
@@ -364,6 +373,26 @@ public class Venta extends javax.swing.JFrame {
 // TODO add your handling code here:
     }//GEN-LAST:event_buscarButtonActionPerformed
 
+    private void cobrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cobrarButtonActionPerformed
+    Pago pago=new Pago();
+    pago.setVisible(true);
+    pago.setLocationRelativeTo(null);
+    serviciodb serv = new serviciodb(); 
+    
+    Iterator<Producto>ite= productosventa.iterator();
+    while(ite.hasNext())
+    {
+    Producto producaux=ite.next();
+    String sql=producaux.getId_barra();
+    boolean pregunta = serv.modificarCantstock(sql,producaux);
+   
+     }
+       /* if(pregunta ==true){
+            JOptionPane.showMessageDialog(null,"El producto fue modificado con éxito", null, WIDTH);
+        }else
+        JOptionPane.showMessageDialog(null,"Ocurrió algún error", null, WIDTH);*/
+    }//GEN-LAST:event_cobrarButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -408,7 +437,7 @@ public class Venta extends javax.swing.JFrame {
     private javax.swing.JButton cancelarButton;
     private javax.swing.JTextField cantidadField;
     private javax.swing.JButton cobrarButton;
-    private javax.swing.JTextField codigoField;
+    public static javax.swing.JTextField codigoField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
