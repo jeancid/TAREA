@@ -44,18 +44,15 @@ public class Sistema extends javax.swing.JFrame {
         FechaLabel = new javax.swing.JLabel();
         UsuarioLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         CerrarMenu = new javax.swing.JMenuItem();
         SalirMenu = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        AgregarProveeMenu = new javax.swing.JMenuItem();
-        ActualizarStockMenu = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         ConsultaprodMenu = new javax.swing.JMenuItem();
         ConsultaProveMenu = new javax.swing.JMenuItem();
-        ConsultaVentaMenu = new javax.swing.JMenuItem();
         VentaMenu = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
 
@@ -63,6 +60,31 @@ public class Sistema extends javax.swing.JFrame {
 
         jLabel1.setText("Usuario");
 
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 153, 255), 5, true));
+
+        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
+        jLabel2.setText("Fastock!!!");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(124, 124, 124)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jMenuBar1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 204, 255)));
+
+        jMenu1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 153, 255), 3, true));
         jMenu1.setText("Sistema");
 
         CerrarMenu.setText("Cerrar sesion");
@@ -83,35 +105,8 @@ public class Sistema extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Mantencion");
-
-        jMenuItem1.setText("Agregar producto");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem1);
-
-        AgregarProveeMenu.setText("Agregar proveedor");
-        AgregarProveeMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AgregarProveeMenuActionPerformed(evt);
-            }
-        });
-        jMenu2.add(AgregarProveeMenu);
-
-        ActualizarStockMenu.setText("Actualizar stock");
-        ActualizarStockMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ActualizarStockMenuActionPerformed(evt);
-            }
-        });
-        jMenu2.add(ActualizarStockMenu);
-
-        jMenuBar1.add(jMenu2);
-
-        jMenu3.setText("Consultas");
+        jMenu3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 153, 255), 3, true));
+        jMenu3.setText("Mantención");
 
         ConsultaprodMenu.setText("Productos");
         ConsultaprodMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -129,12 +124,10 @@ public class Sistema extends javax.swing.JFrame {
         });
         jMenu3.add(ConsultaProveMenu);
 
-        ConsultaVentaMenu.setText("Venta");
-        jMenu3.add(ConsultaVentaMenu);
-
         jMenuBar1.add(jMenu3);
 
-        VentaMenu.setText("Venta");
+        VentaMenu.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 153, 255), 3, true));
+        VentaMenu.setText("Realizar Venta");
         VentaMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 VentaMenuMouseClicked(evt);
@@ -147,7 +140,8 @@ public class Sistema extends javax.swing.JFrame {
         });
         jMenuBar1.add(VentaMenu);
 
-        jMenu4.setText("Ventas");
+        jMenu4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 153, 255), 3, true));
+        jMenu4.setText("Consultar Ventas");
         jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu4MouseClicked(evt);
@@ -166,19 +160,26 @@ public class Sistema extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(UsuarioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 473, Short.MAX_VALUE)
-                .addComponent(FechaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(UsuarioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
+                        .addComponent(FechaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(722, Short.MAX_VALUE)
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -203,20 +204,6 @@ public class Sistema extends javax.swing.JFrame {
         this.dispose();       // TODO add your handling code here:
     }//GEN-LAST:event_SalirMenuActionPerformed
 
-    private void AgregarProveeMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarProveeMenuActionPerformed
-        Proveedor proveedor=new Proveedor();
-        proveedor.setVisible(true);
-        proveedor.setLocationRelativeTo(null);
-        this.dispose();// TODO add your handling code here:
-    }//GEN-LAST:event_AgregarProveeMenuActionPerformed
-
-    private void ActualizarStockMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarStockMenuActionPerformed
-         Actualizar_stock actualizar_stock=new Actualizar_stock();
-         actualizar_stock.setVisible(true);
-         actualizar_stock.setLocationRelativeTo(null);
-         this.dispose();// TODO add your handling code here:
-    }//GEN-LAST:event_ActualizarStockMenuActionPerformed
-
     private void ConsultaprodMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaprodMenuActionPerformed
          Consultaproductos consultaproductos=new Consultaproductos();
          String Usuario=this.UsuarioLabel.getText();
@@ -239,15 +226,6 @@ public class Sistema extends javax.swing.JFrame {
     private void VentaMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VentaMenuActionPerformed
          // TODO add your handling code here:
     }//GEN-LAST:event_VentaMenuActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-         
-          Productos producto=new Productos();
-          producto.setVisible(true);
-          producto.setLocationRelativeTo(null);
-          this.dispose();
-// TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void VentaMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VentaMenuMouseClicked
    
@@ -307,22 +285,19 @@ public class Sistema extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem ActualizarStockMenu;
-    private javax.swing.JMenuItem AgregarProveeMenu;
     private javax.swing.JMenuItem CerrarMenu;
     private javax.swing.JMenuItem ConsultaProveMenu;
-    private javax.swing.JMenuItem ConsultaVentaMenu;
     private javax.swing.JMenuItem ConsultaprodMenu;
     private javax.swing.JLabel FechaLabel;
     private javax.swing.JMenuItem SalirMenu;
     public static javax.swing.JLabel UsuarioLabel;
     private javax.swing.JMenu VentaMenu;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
