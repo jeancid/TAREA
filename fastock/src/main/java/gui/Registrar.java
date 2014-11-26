@@ -5,6 +5,8 @@
  */
 package gui;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author jean
@@ -29,7 +31,7 @@ public class Registrar extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         UsuarioLabel = new javax.swing.JLabel();
-        UsuarioField = new javax.swing.JTextField();
+        NombreField = new javax.swing.JTextField();
         PassLabel = new javax.swing.JLabel();
         PassField = new javax.swing.JTextField();
         Aceptar = new javax.swing.JButton();
@@ -44,6 +46,11 @@ public class Registrar extends javax.swing.JFrame {
         PassLabel.setText("Password");
 
         Aceptar.setText("ACEPTAR");
+        Aceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AceptarActionPerformed(evt);
+            }
+        });
 
         AtrasButton.setText("ATRAS");
         AtrasButton.addActionListener(new java.awt.event.ActionListener() {
@@ -68,14 +75,13 @@ public class Registrar extends javax.swing.JFrame {
                             .addComponent(UsuarioLabel))
                         .addGap(129, 129, 129)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(UsuarioField)
-                            .addComponent(PassField, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))))
-                .addContainerGap(77, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(200, 200, 200)
-                .addComponent(Aceptar)
-                .addGap(18, 18, 18)
-                .addComponent(AtrasButton)
+                            .addComponent(NombreField)
+                            .addComponent(PassField, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(200, 200, 200)
+                        .addComponent(Aceptar)
+                        .addGap(18, 18, 18)
+                        .addComponent(AtrasButton)))
                 .addContainerGap(82, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -86,7 +92,7 @@ public class Registrar extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(UsuarioLabel)
-                    .addComponent(UsuarioField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(NombreField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PassLabel)
@@ -108,6 +114,23 @@ public class Registrar extends javax.swing.JFrame {
     dispose();
  // TODO add your handling code here:
     }//GEN-LAST:event_AtrasButtonActionPerformed
+
+    private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
+        // TODO add your handling code here:
+        if (this.NombreField.getText().equals("") || this.PassField.getText().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Debe llenar todos los campos");
+        }else
+        if (this.NombreField.getText().equals("admin") && this.PassField.getText().equals("1234")) {
+            JOptionPane.showMessageDialog(rootPane, "Datos Correctos");
+                CrudUsuario crud = new CrudUsuario();
+                crud.setVisible(true);
+                crud.setLocationRelativeTo(null);
+                this.dispose();
+            
+        } else {
+                JOptionPane.showMessageDialog(rootPane, "Datos de admin incorrectos");
+                }
+    }//GEN-LAST:event_AceptarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,9 +170,9 @@ public class Registrar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Aceptar;
     private javax.swing.JButton AtrasButton;
+    private javax.swing.JTextField NombreField;
     private javax.swing.JTextField PassField;
     private javax.swing.JLabel PassLabel;
-    private javax.swing.JTextField UsuarioField;
     private javax.swing.JLabel UsuarioLabel;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

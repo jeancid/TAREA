@@ -40,6 +40,7 @@ public class Loginn extends javax.swing.JFrame {
         PassField = new javax.swing.JPasswordField();
         CancelarBoton = new javax.swing.JToggleButton();
         AceptarBoton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,6 +71,13 @@ public class Loginn extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("ADMIN");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -85,7 +93,8 @@ public class Loginn extends javax.swing.JFrame {
                         .addComponent(AceptarBoton)
                         .addGap(44, 44, 44)
                         .addComponent(CancelarBoton)
-                        .addGap(0, 126, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                        .addComponent(jButton1))
                     .addComponent(PassField)
                     .addComponent(NombreField))
                 .addContainerGap())
@@ -104,7 +113,8 @@ public class Loginn extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AceptarBoton)
-                    .addComponent(CancelarBoton))
+                    .addComponent(CancelarBoton)
+                    .addComponent(jButton1))
                 .addGap(28, 28, 28))
         );
 
@@ -186,6 +196,14 @@ public class Loginn extends javax.swing.JFrame {
         }*/        // TODO add your handling code here:
     }//GEN-LAST:event_AceptarBotonMouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+                Registrar registrar = new Registrar();
+                registrar.setVisible(true);
+                registrar.setLocationRelativeTo(null);
+                this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -228,6 +246,7 @@ public class Loginn extends javax.swing.JFrame {
     private javax.swing.JTextField NombreField;
     private javax.swing.JLabel NombreLabel;
     private javax.swing.JPasswordField PassField;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

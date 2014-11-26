@@ -174,6 +174,28 @@ public class serviciodb {
         return usuario;
     }
     
+    public void setUsuario(Usuario usuario) {
+        
+        try {
+            // Conectamos si no está conectado
+                if (!isConectado()) {
+                    conectar();
+                }
+                PreparedStatement st = null;
+                String query = "Insert into usuario(usuario,pass) values (?,?)";
+                st = conexion.prepareStatement(query);
+                st.setString(1,usuario.getUsuario());
+                st.setString(2, usuario.getPass());
+                
+                st.executeUpdate();
+   } catch (Exception e) {
+            usuario = null;
+            logger.error(e.toString());
+            logger.debug("Error al obtener usuario", e);
+        }
+        
+    }
+    
     public boolean setProveedor(Proveedor proveedor) {
       boolean pregunta =false;
 //System.out.println(proveedor.getId_rut());
