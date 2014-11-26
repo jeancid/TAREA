@@ -5,6 +5,8 @@
  */
 package gui;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author jean
@@ -48,6 +50,12 @@ public class Pago extends javax.swing.JFrame {
         TotalField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TotalField2ActionPerformed(evt);
+            }
+        });
+
+        PagoField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                PagoFieldKeyTyped(evt);
             }
         });
 
@@ -163,9 +171,13 @@ public class Pago extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
       Integer Pago=Integer.parseInt(this.PagoField.getText());   
       Integer Total=Integer.parseInt(this.TotalField2.getText());
+      if(Total>Pago){
+      JOptionPane.showMessageDialog(rootPane,"No alcanza con el efectivo ingresado");
+      }
+      else{
       Integer Vuelto=Pago-Total;
       VueltoField.setText(Vuelto.toString());
-      
+      }
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -173,6 +185,11 @@ public class Pago extends javax.swing.JFrame {
  
      dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void PagoFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PagoFieldKeyTyped
+            char car = evt.getKeyChar();
+            if((car<'0' || car>'9')) evt.consume();         // TODO add your handling code here:
+    }//GEN-LAST:event_PagoFieldKeyTyped
 
     /**
      * @param args the command line arguments
