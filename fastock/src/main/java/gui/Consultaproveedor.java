@@ -503,7 +503,7 @@ public class Consultaproveedor extends javax.swing.JFrame {
             if(pregunta==true){
                 JOptionPane.showMessageDialog(null,"El proveedor fue eliminado con éxito", null, WIDTH);
             }}
-            if(pregunta==false) JOptionPane.showMessageDialog(null,"Ocurrió algún error", null, WIDTH);
+            if(pregunta==false) JOptionPane.showMessageDialog(null,"Para eliminar este proveedor primero debe eliminar los productos que estan asociados a este proveedor", null, WIDTH);
 
             Limpiar();
             MostrarDatos();
