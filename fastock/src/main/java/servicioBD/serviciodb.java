@@ -15,6 +15,7 @@ import java.util.Iterator;
 import java.util.Properties;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.swing.JOptionPane;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import modell.Usuario;
@@ -550,6 +551,7 @@ public class serviciodb {
     
     public Producto getBuscarProductocod(String codigo){
         Producto producto=new Producto();
+        int cont=0;
      try {
                 // Conectamos si no está conectado
                 if (!isConectado()) {
@@ -558,21 +560,23 @@ public class serviciodb {
          PreparedStatement st = null;
                 String query = "SELECT*FROM producto WHERE id_barra=?";
                 st = conexion.prepareStatement(query);
-              
+               
                 if(st !=null){
                     st.setString(1,codigo);
                     ResultSet rs = st.executeQuery();
-                    if (rs != null) {
-                        
+                    
+                   if (rs != null){
+                            
                             rs.next();
                             producto.setId_barra(rs.getString(1));
                             producto.setPrecio(rs.getInt(2));
-                            producto.setNombre(rs.getString(3));      
-                         }
-                    else{
-                        logger.info("No existe Producto ");
+                            producto.setNombre(rs.getString(3));  
                             
-                        }
+                         
+                                             /*  if(cont==0){
+                      
+                        JOptionPane.showMessageDialog(null,"No existe producto");}*/
+                   }              
                     st.close();
                 }
          else {
