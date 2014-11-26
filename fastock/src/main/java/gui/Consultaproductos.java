@@ -263,6 +263,9 @@ void MostrarDatos(ArrayList<Producto> productos){
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 CantidadFieldKeyTyped(evt);
             }
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CantidadFieldKeyPressed(evt);
+            }
         });
 
         CategoriaBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Liquidos", "Abarrotes", "Confites" }));
@@ -459,6 +462,7 @@ void MostrarDatos(ArrayList<Producto> productos){
 
     private void ModificarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarBotonActionPerformed
         if(CamposLlenos()==true){
+        
         Producto producto=new Producto();
         int fila = ProductoTable.getSelectedRow();
         String sql= ProductoTable.getValueAt(fila, 0).toString();
@@ -644,6 +648,10 @@ void MostrarDatos(ArrayList<Producto> productos){
     char car = evt.getKeyChar();
             if((car<'0' || car>'9')) evt.consume();        // TODO add your handling code here:
     }//GEN-LAST:event_CantidadFieldKeyTyped
+
+    private void CantidadFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CantidadFieldKeyPressed
+            // TODO add your handling code here:
+    }//GEN-LAST:event_CantidadFieldKeyPressed
      
     /**
      * @param args the command line arguments

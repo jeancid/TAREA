@@ -104,16 +104,49 @@ public class serviciodb {
     }
     
     
-    
-    public Usuario getUsuario() {
-        Usuario usuario = null;
+    public ArrayList<Usuario> getUsuarios(){
+        ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
         try {
-            
-                // Conectamos si no está conectado
+                                    // Conectamos si no está conectado
                 if (!isConectado()) {
                     conectar();
                 }
 
+                PreparedStatement st = null;
+                String query = "SELECT * FROM usuario ";
+                st = conexion.prepareStatement(query);
+                if (st != null) {
+
+                    ResultSet rs = st.executeQuery();
+                    
+                    if (rs != null) {
+                        while (rs.next()) {
+                            Usuario usuario1 = new Usuario();
+                            usuario1.setPass(rs.getString(2));
+                            usuario1.setUsuario(rs.getString(3));
+                            
+                            usuarios.add(usuario1);
+                        } 
+                        rs.close();
+                    }
+                    st.close();
+                }
+       
+        } catch (Exception e) {
+            usuarios = null;
+            logger.error(e.toString());
+            logger.debug("Error al obtener producto", e);
+        }
+        return usuarios;
+     
+    }
+    public Usuario getUsuario() {
+        Usuario usuario = null;
+        try {
+            // Conectamos si no está conectado
+                if (!isConectado()) {
+                    conectar();
+                }
                 PreparedStatement st = null;
                 String query = "SELECT * FROM usuario ";
                 st = conexion.prepareStatement(query);

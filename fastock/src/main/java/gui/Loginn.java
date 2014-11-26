@@ -5,6 +5,8 @@
  */
 package gui;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import javax.swing.JOptionPane;
 import modell.Usuario;
 import servicioBD.serviciodb;
@@ -120,29 +122,34 @@ public class Loginn extends javax.swing.JFrame {
             usuario.setUsuario(this.NombreField.getText());
             usuario.setPass(this.PassField.getText());
             serviciodb serv = new serviciodb();
-            Usuario usuario2 = new Usuario();
-            usuario2 = serv.getUsuario();
-            if(usuario2.getPass().equals(usuario.getPass()) && usuario2.getUsuario().equals(usuario.getUsuario())){
+            ArrayList<Usuario> usuario2 = new ArrayList <Usuario>();
+            usuario2 = serv.getUsuarios();
+            Iterator<Usuario>ite= usuario2.iterator();
+            while(ite.hasNext()){
+            Usuario usuarioaux= ite.next();
+            
+                if( usuarioaux.getPass().equals(usuario.getPass()) && usuarioaux.getUsuario().equals(usuario.getUsuario()))
+                {// JOptionPane.showMessageDialog(rootPane,"Algun campo no funciona");else {
                 Sistema menu = new Sistema();
                 menu.setVisible(true);
                 menu.setLocationRelativeTo(null);
                 this.dispose();
-            }else
-            JOptionPane.showMessageDialog(rootPane,"Algun campo no funciona");
+                }
         }
         String nom=this.NombreField.getText();
     Sistema.UsuarioLabel.setText(nom);
     }//GEN-LAST:event_AceptarBotonActionPerformed
-
+    }
     
     private void AceptarBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AceptarBotonMouseClicked
-        if (this.NombreField.getText().equals("") || this.PassField.getText().equals("")) {
+   /*     if (this.NombreField.getText().equals("") || this.PassField.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe llenar todos los campos");
         } else {
             Usuario usuario = new Usuario();
             usuario.setUsuario(this.NombreField.getText());
             usuario.setPass(this.PassField.getText());
             serviciodb serv = new serviciodb();
+            
             Usuario usuario2 = new Usuario();
             usuario2 = serv.getUsuario();
             if(usuario2.getPass().equals(usuario.getPass()) && usuario2.getUsuario().equals(usuario.getUsuario())){
@@ -155,7 +162,7 @@ public class Loginn extends javax.swing.JFrame {
                 
             }else
             JOptionPane.showMessageDialog(rootPane,"Contraseña o usuario invalido");
-        }        // TODO add your handling code here:
+        }*/        // TODO add your handling code here:
     }//GEN-LAST:event_AceptarBotonMouseClicked
 
     /**
