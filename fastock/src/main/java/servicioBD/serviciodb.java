@@ -129,13 +129,14 @@ public class serviciodb {
                         } 
                         rs.close();
                     }
+                    else logger.info("No existe Usuario ");
                     st.close();
                 }
        
         } catch (Exception e) {
             usuarios = null;
             logger.error(e.toString());
-            logger.debug("Error al obtener producto", e);
+            logger.debug("Error al obtener el usuario", e);
         }
         return usuarios;
      
@@ -562,13 +563,16 @@ public class serviciodb {
                     st.setString(1,codigo);
                     ResultSet rs = st.executeQuery();
                     if (rs != null) {
-                        rs.next();
+                        
+                            rs.next();
                             producto.setId_barra(rs.getString(1));
                             producto.setPrecio(rs.getInt(2));
-                            producto.setNombre(rs.getString(3));
+                            producto.setNombre(rs.getString(3));      
+                         }
+                    else{
+                        logger.info("No existe Producto ");
                             
-                            
-                    }
+                        }
                     st.close();
                 }
          else {

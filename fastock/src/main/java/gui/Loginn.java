@@ -156,6 +156,7 @@ public class Loginn extends javax.swing.JFrame {
             ArrayList<Usuario> usuario2 = new ArrayList <Usuario>();
             usuario2 = serv.getUsuarios();
             Iterator<Usuario>ite= usuario2.iterator();
+            int cont=0;
             while(ite.hasNext()){
             Usuario usuarioaux= ite.next();
             
@@ -165,8 +166,12 @@ public class Loginn extends javax.swing.JFrame {
                 menu.setVisible(true);
                 menu.setLocationRelativeTo(null);
                 this.dispose();
+                cont=1;
                 }
+                
         }
+            if(cont==0)
+                JOptionPane.showMessageDialog(rootPane,"No existe usuario");
         String nom=this.NombreField.getText();
     Sistema.UsuarioLabel.setText(nom);
     }//GEN-LAST:event_AceptarBotonActionPerformed
