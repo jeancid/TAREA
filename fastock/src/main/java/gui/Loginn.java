@@ -37,7 +37,6 @@ public class Loginn extends javax.swing.JFrame {
         PassField = new javax.swing.JPasswordField();
         CancelarBoton = new javax.swing.JToggleButton();
         AceptarBoton = new javax.swing.JButton();
-        RegistrarButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,13 +63,6 @@ public class Loginn extends javax.swing.JFrame {
             }
         });
 
-        RegistrarButton.setText("REGISTRAR");
-        RegistrarButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegistrarButtonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -80,9 +72,7 @@ public class Loginn extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(CancelarBoton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
-                        .addComponent(RegistrarButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 213, Short.MAX_VALUE)
                         .addComponent(AceptarBoton))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,8 +98,7 @@ public class Loginn extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AceptarBoton)
-                    .addComponent(CancelarBoton)
-                    .addComponent(RegistrarButton))
+                    .addComponent(CancelarBoton))
                 .addContainerGap())
         );
 
@@ -123,7 +112,7 @@ public class Loginn extends javax.swing.JFrame {
     }//GEN-LAST:event_CancelarBotonActionPerformed
 
     private void AceptarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarBotonActionPerformed
-           
+                  
         if (this.NombreField.getText().equals("") || this.PassField.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe llenar todos los campos");
         } else {
@@ -141,11 +130,13 @@ public class Loginn extends javax.swing.JFrame {
             }else
             JOptionPane.showMessageDialog(rootPane,"Algun campo no funciona");
         }
-// TODO add your handling code here:
+        String nom=this.NombreField.getText();
+    Sistema.UsuarioLabel.setText(nom);
     }//GEN-LAST:event_AceptarBotonActionPerformed
 
+    
     private void AceptarBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AceptarBotonMouseClicked
-if (this.NombreField.getText().equals("") || this.PassField.getText().equals("")) {
+        if (this.NombreField.getText().equals("") || this.PassField.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe llenar todos los campos");
         } else {
             Usuario usuario = new Usuario();
@@ -156,19 +147,16 @@ if (this.NombreField.getText().equals("") || this.PassField.getText().equals("")
             usuario2 = serv.getUsuario();
             if(usuario2.getPass().equals(usuario.getPass()) && usuario2.getUsuario().equals(usuario.getUsuario())){
                 Sistema menu = new Sistema();
+                JOptionPane.showMessageDialog(rootPane,"entro al 2");
                 menu.setVisible(true);
                 menu.setLocationRelativeTo(null);
                 this.dispose();
+               
+                
             }else
-            JOptionPane.showMessageDialog(rootPane,"Algun campo no funciona");
+            JOptionPane.showMessageDialog(rootPane,"Contraseña o usuario invalido");
         }        // TODO add your handling code here:
     }//GEN-LAST:event_AceptarBotonMouseClicked
-
-    private void RegistrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarButtonActionPerformed
-         Registrar registrar= new Registrar();
-         registrar.setVisible(true);
-         registrar.setLocationRelativeTo(null);// TODO add your handling code here:
-    }//GEN-LAST:event_RegistrarButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -212,6 +200,5 @@ if (this.NombreField.getText().equals("") || this.PassField.getText().equals("")
     private javax.swing.JTextField NombreField;
     private javax.swing.JLabel NombreLabel;
     private javax.swing.JPasswordField PassField;
-    private javax.swing.JButton RegistrarButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -20,6 +20,7 @@ import org.slf4j.LoggerFactory;
 import modell.Usuario;
 import modell.Proveedor;
 import modell.Producto;
+import modell.venta;
 import org.apache.commons.lang.StringUtils;
 
 /**
@@ -172,17 +173,56 @@ public class serviciodb {
         }
         return pregunta;
     }
-    
+     public boolean setVenta(int Monto,String usu,String fecha){
+       boolean pregunta=false;
+       
+       try{
+           if(!isConectado()){
+               conectar();
+           }
+           PreparedStatement sp= null;
+           PreparedStatement st= null;
+           String query1="Select idusuario from usuario where usuario=?";
+           Integer idus=null;
+           sp=conexion.prepareStatement(query1);          
+                            if(sp !=null){
+                    sp.setString(1,usu);
+                    ResultSet rp = sp.executeQuery();
+                   
+                    if (rp != null) {
+                        
+                       rp.next();
+                        
+                         idus =Integer.parseInt(rp.getString(1));
+                      //   idus=Integer.parseInt(result.toString());                
+                        
+                          } 
+            rp.close();
+                   }     
+           String query="Insert into Venta(monto,fecha,usuario_idusuario)values(?,?,?)";
+           st=conexion.prepareStatement(query);
+           st.setInt(1,Monto);
+           st.setString(2,fecha);
+           st.setInt(3,idus);
+           st.executeUpdate();
+                pregunta=true;
+                sp.close();
+                st.close();
+       
+       } catch (Exception e) {
+            logger.error(e.toString());
+            logger.debug("Error al obtener usuario", e);
+            pregunta = false;
+        }
+        return pregunta;
+     }
      public boolean setProducto(Producto producto) {
       boolean pregunta =false;
-
         try {
-            
                 // Conectamos si no está conectado
                 if (!isConectado()) {
                     conectar();
                 }
-
                 PreparedStatement st = null;
                 String query = "Insert into producto(id_barra,precio,nombre,cantidad,categoria,proveedor_id_rut)values(?,?,?,?,?,?) ";
                 st = conexion.prepareStatement(query);
@@ -246,6 +286,44 @@ public class serviciodb {
         }
         return productos;
     }
+     public ArrayList<venta> getVentaTotal(){
+        ArrayList<venta> ventas = new ArrayList<venta>();
+        try {
+            
+            
+                // Conectamos si no está conectado
+                if (!isConectado()) {
+                    conectar();
+                }
+
+                PreparedStatement st = null;
+                String query = "SELECT * FROM Venta ";
+                st = conexion.prepareStatement(query);
+                if (st != null) {
+
+                    ResultSet rs = st.executeQuery();
+                    
+                    if (rs != null) {
+                        while (rs.next()) {
+                            venta venta1 = new venta();
+                            venta1.setIdventa(rs.getInt(1));
+                            venta1.setMonto(rs.getInt(2));
+                            venta1.setFecha(rs.getString(3));
+                            venta1.setUsuario_idusuario(rs.getInt(4));
+                            ventas.add(venta1);
+                        } 
+                        rs.close();
+                    }
+                    st.close();
+                }
+       
+        } catch (Exception e) {
+            ventas = null;
+            logger.error(e.toString());
+            logger.debug("Error al obtener producto", e);
+        }
+        return ventas;
+    }
      
      public Proveedor getBuscarProveedor(String nombre){
      Proveedor proveedor=new Proveedor();
@@ -255,7 +333,7 @@ public class serviciodb {
                 if (!isConectado()) {
                     conectar();
                 }
-         PreparedStatement st = null;
+                PreparedStatement st = null;
                 String query = "SELECT*FROM proveedor WHERE nombre=?";
                 st = conexion.prepareStatement(query);
               
@@ -284,6 +362,39 @@ public class serviciodb {
             logger.debug("Error al obtener producto", e);
         }
       return proveedor;   
+     }
+     public Usuario getBuscarUsuario(int ide){
+     Usuario usuario=new Usuario();
+     try{
+          if (!isConectado()) {
+                    conectar();
+                }
+         PreparedStatement st = null;
+                String query = "SELECT usuario FROM usuario WHERE idusuario=?";
+                st = conexion.prepareStatement(query);
+              
+                if(st !=null){
+                    st.setInt(1, ide);
+                    ResultSet rs = st.executeQuery();
+                    if (rs != null) {
+                        rs.next();
+                            usuario.setUsuario(rs.getString(1));
+                            
+                    }
+                    st.close();
+                }
+         else {
+                logger.info("ERROR al buscar Usuario");
+            }
+     }
+     
+     catch (Exception e) {
+            usuario = null;
+            logger.error(e.toString());
+            logger.debug("Error al obtener producto", e);
+        }
+      return usuario;   
+     
      }
      public Proveedor getBuscarProveedor(int idProv){
      Proveedor proveedor=new Proveedor();

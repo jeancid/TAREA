@@ -20,7 +20,12 @@ public class Sistema extends javax.swing.JFrame {
     public Sistema() {
         initComponents();
         this.FechaLabel.setText(fechaActual());
+        
+          
     }
+       
+       
+         
        public static String fechaActual(){
      
         Date fecha=new Date();
@@ -37,6 +42,8 @@ public class Sistema extends javax.swing.JFrame {
     private void initComponents() {
 
         FechaLabel = new javax.swing.JLabel();
+        UsuarioLabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         CerrarMenu = new javax.swing.JMenuItem();
@@ -50,8 +57,11 @@ public class Sistema extends javax.swing.JFrame {
         ConsultaProveMenu = new javax.swing.JMenuItem();
         ConsultaVentaMenu = new javax.swing.JMenuItem();
         VentaMenu = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("Usuario");
 
         jMenu1.setText("Sistema");
 
@@ -137,6 +147,19 @@ public class Sistema extends javax.swing.JFrame {
         });
         jMenuBar1.add(VentaMenu);
 
+        jMenu4.setText("Ventas");
+        jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu4MouseClicked(evt);
+            }
+        });
+        jMenu4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu4ActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(jMenu4);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -144,7 +167,11 @@ public class Sistema extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(325, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(UsuarioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
                 .addComponent(FechaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41))
         );
@@ -152,7 +179,13 @@ public class Sistema extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(290, Short.MAX_VALUE)
-                .addComponent(FechaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(FechaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(UsuarioLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(13, 13, 13))))
                 .addContainerGap())
         );
 
@@ -186,6 +219,8 @@ public class Sistema extends javax.swing.JFrame {
 
     private void ConsultaprodMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaprodMenuActionPerformed
          Consultaproductos consultaproductos=new Consultaproductos();
+         String Usuario=this.UsuarioLabel.getText();
+         Consultaproductos.UsuarioLabel.setText(Usuario);
          consultaproductos.setVisible(true);
          consultaproductos.setLocationRelativeTo(null);
          this.dispose();// TODO add your handling code here:
@@ -193,6 +228,8 @@ public class Sistema extends javax.swing.JFrame {
 
     private void ConsultaProveMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaProveMenuActionPerformed
          Consultaproveedor consultaproveedor=new Consultaproveedor();
+         String Usuario=this.UsuarioLabel.getText();
+         Consultaproveedor.UsuarioLabel.setText(Usuario);
          consultaproveedor.setVisible(true);
          consultaproveedor.setLocationRelativeTo(null); 
          this.dispose(); 
@@ -200,13 +237,11 @@ public class Sistema extends javax.swing.JFrame {
     }//GEN-LAST:event_ConsultaProveMenuActionPerformed
 
     private void VentaMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VentaMenuActionPerformed
-         Venta venta=new Venta();
-         venta.setVisible(true);
-         venta.setLocationRelativeTo(null);
-         this.dispose();// TODO add your handling code here:
+         // TODO add your handling code here:
     }//GEN-LAST:event_VentaMenuActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+         
           Productos producto=new Productos();
           producto.setVisible(true);
           producto.setLocationRelativeTo(null);
@@ -215,11 +250,26 @@ public class Sistema extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void VentaMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VentaMenuMouseClicked
-          Venta venta=new Venta();
+   
+        Venta venta=new Venta();
+        String Usuario=this.UsuarioLabel.getText();
+        Venta.NombreLabel.setText(Usuario);
           venta.setVisible(true);
           venta.setLocationRelativeTo(null);
-          this.dispose();// TODO add your handling code here:
+          this.dispose();
+      
     }//GEN-LAST:event_VentaMenuMouseClicked
+
+    private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
+      // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu4ActionPerformed
+
+    private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
+       VentasTotales ventas= new VentasTotales();
+      ventas.setVisible(true);
+      ventas.setLocationRelativeTo(null);
+       // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -265,10 +315,13 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JMenuItem ConsultaprodMenu;
     private javax.swing.JLabel FechaLabel;
     private javax.swing.JMenuItem SalirMenu;
+    public static javax.swing.JLabel UsuarioLabel;
     private javax.swing.JMenu VentaMenu;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     // End of variables declaration//GEN-END:variables

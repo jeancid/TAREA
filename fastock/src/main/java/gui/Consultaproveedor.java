@@ -150,6 +150,7 @@ public class Consultaproveedor extends javax.swing.JFrame {
         NuevoBoton = new javax.swing.JButton();
         GuardarBoton = new javax.swing.JButton();
         AtrasButton = new javax.swing.JButton();
+        UsuarioLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -319,7 +320,9 @@ public class Consultaproveedor extends javax.swing.JFrame {
                             .addComponent(RutField, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(AtrasButton)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(UsuarioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(145, 145, 145)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -365,7 +368,9 @@ public class Consultaproveedor extends javax.swing.JFrame {
                     .addComponent(NuevoBoton)
                     .addComponent(GuardarBoton))
                 .addGap(23, 23, 23)
-                .addComponent(AtrasButton)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(AtrasButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(UsuarioLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -391,6 +396,8 @@ public class Consultaproveedor extends javax.swing.JFrame {
 
     private void AtrasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasButtonActionPerformed
         Sistema sistema = new Sistema();
+        String Usuario=this.UsuarioLabel.getText();
+        Sistema.UsuarioLabel.setText(Usuario);
         sistema.setVisible(true);
         sistema.setLocationRelativeTo(null);
         this.dispose();        // TODO add your handling code here:
@@ -633,6 +640,7 @@ public class Consultaproveedor extends javax.swing.JFrame {
     private javax.swing.JLabel RutProveedor;
     private javax.swing.JTextField TelefonoField;
     private javax.swing.JLabel TelefonoLabel;
+    public static javax.swing.JLabel UsuarioLabel;
     private javax.swing.JLabel buscarLabel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

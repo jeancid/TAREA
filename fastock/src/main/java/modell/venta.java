@@ -14,7 +14,7 @@ import java.util.Date;
 public class venta {
     private Integer idventa=null;
     private Integer monto=null;
-    private Date fecha=null;
+    private String fecha=null;
     private Integer usuario_idusuario=null;
 
     public venta() {
@@ -29,10 +29,10 @@ public class venta {
         this.monto = monto;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha)
+    {
         this.fecha = fecha;
     }
-    
     public void setUsuario_idusuario(Integer usuario_idusuario) {
         this.usuario_idusuario = usuario_idusuario;
     }
@@ -45,7 +45,7 @@ public class venta {
         return monto;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 

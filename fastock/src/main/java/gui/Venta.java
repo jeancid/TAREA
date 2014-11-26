@@ -111,6 +111,10 @@ public class Venta extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         TotalField = new javax.swing.JTextField();
         FechaLabel = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        UsuarioLabel = new javax.swing.JLabel();
+        NombreLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -278,24 +282,49 @@ public class Venta extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
+        jLabel5.setText("Usuario");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(52, 52, 52))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(FechaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(52, 52, 52))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(NombreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(UsuarioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(FechaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addComponent(FechaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(FechaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(43, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(UsuarioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(NombreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(9, 9, 9)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -303,7 +332,18 @@ public class Venta extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-      void MostrarDatos(Producto productos,int cantidad){
+    void LimpiarTabla(){
+    DefaultTableModel modelo=new DefaultTableModel();
+    modelo.addColumn("Codigo");
+    modelo.addColumn("Precio");
+    modelo.addColumn("Nombre");
+    modelo.addColumn("Cantidad");
+    ventaTable.setModel(modelo);
+    productosventa.clear();
+    Total(productosventa);
+    
+    }  
+    void MostrarDatos(Producto productos,int cantidad){
         
         DefaultTableModel modelo=new DefaultTableModel();
             modelo.addColumn("Codigo");
@@ -328,10 +368,9 @@ public class Venta extends javax.swing.JFrame {
          
 
     private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
-        Venta venta= new Venta();
-        venta.setVisible(true);
-        venta.setLocationRelativeTo(null);
-        this.dispose();// TODO add your handling code here:
+ 
+        LimpiarTabla();
+    // TODO add your handling code here:
     }//GEN-LAST:event_cancelarButtonActionPerformed
 
     private void cantidadFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadFieldActionPerformed
@@ -341,6 +380,8 @@ public class Venta extends javax.swing.JFrame {
         Sistema sistema = new Sistema();
         sistema.setVisible(true);
         sistema.setLocationRelativeTo(null);
+        String nombre=(this.NombreLabel.getText());
+        Sistema.UsuarioLabel.setText(nombre);
         this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_atrasButtonActionPerformed
 
@@ -437,9 +478,15 @@ if(codigoField.getText().trim().length()==0 || cantidadField.getText().trim().le
     String sql=producaux.getId_barra();
     boolean pregunta = serv.modificarCantstock(sql,producaux);
     }
+    
     String To = this.TotalField.getText();
-      Pago.TotalField2.setText(To);
-      dispose();
+    Pago.TotalField2.setText(To);
+    Pago.UsuarioLabel.setText(this.NombreLabel.getText());
+    Integer tota=Integer.parseInt(this.TotalField.getText());
+    boolean pregunta = serv.setVenta(tota,this.NombreLabel.getText(),this.FechaLabel.getText());
+    LimpiarTabla();
+     
+      
     }//GEN-LAST:event_cobrarButtonActionPerformed
 
     private void codigoFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codigoFieldKeyTyped
@@ -490,7 +537,9 @@ if(codigoField.getText().trim().length()==0 || cantidadField.getText().trim().le
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel FechaLabel;
+    public static javax.swing.JLabel NombreLabel;
     private javax.swing.JTextField TotalField;
+    public static javax.swing.JLabel UsuarioLabel;
     private javax.swing.JButton agregarButton;
     private javax.swing.JButton atrasButton;
     private javax.swing.JButton borrarButton;
@@ -503,6 +552,8 @@ if(codigoField.getText().trim().length()==0 || cantidadField.getText().trim().le
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable ventaTable;
