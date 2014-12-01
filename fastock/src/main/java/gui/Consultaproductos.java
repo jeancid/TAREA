@@ -218,7 +218,7 @@ void MostrarDatos(ArrayList<Producto> productos){
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel1.setText("Buscar por nombre:");
+        jLabel1.setText("Buscar por codigo:");
 
         BuscarField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
