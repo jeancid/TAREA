@@ -561,8 +561,8 @@ void MostrarDatos(ArrayList<Producto> productos){
         DeshabilitarCampos();
         ArrayList<Producto> productos = new ArrayList<Producto>();
         serviciodb serv = new serviciodb();
-        String nombrepro= this.BuscarField.getText();
-        productos = serv.getBuscarProducto(nombrepro);
+        String codigo= this.BuscarField.getText();
+        productos = serv.getBuscarProductocodigo(codigo);
         MostrarDatos(productos);
         this.BuscarField.setText("");
         
@@ -637,7 +637,7 @@ void MostrarDatos(ArrayList<Producto> productos){
 
     private void BuscarFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuscarFieldKeyTyped
              char car = evt.getKeyChar();
-            if(!(car<'0' || car>'9')) evt.consume();        // TODO add your handling code here:
+            if((car<'0' || car>'9')) evt.consume();        // TODO add your handling code here:
     }//GEN-LAST:event_BuscarFieldKeyTyped
 
     private void CodigoFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CodigoFieldKeyTyped
